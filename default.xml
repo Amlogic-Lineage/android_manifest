@@ -2,8 +2,30 @@
 <manifest>
   <remote fetch="https://android.googlesource.com/" name="aosp" review="https://android.googlesource.com/"/>
   <remote fetch="https://github.com/khadas/" name="github"/>
+  <remote fetch="https://github.com/Amlogic-Lineage/" revision="khadas-vims-pie_64" name="lineage-khadas"/>
   <default remote="github" revision="khadas-vims-pie" sync-c="true" sync-j="4"/>
-  
+
+  <!-- projects patched for 64bits compatibility -->
+  <project name="android_frameworks_base" remote="lineage-khadas" path="frameworks/base" />
+  <project name="android_frameworks_av" remote="lineage-khadas" path="frameworks/av" />
+  <project name="android_hardware_amlogic_audio" remote="lineage-khadas" path="hardware/amlogic/audio"  />
+  <project name="android_hardware_amlogic_LibAudio" remote="lineage-khadas" path="hardware/amlogic/LibAudio"  />
+  <project name="android_hardware_amlogic_camera" remote="lineage-khadas" path="hardware/amlogic/camera"  />
+  <project name="android_hardware_amlogic_bluetooth" remote="lineage-khadas" path="hardware/amlogic/bluetooth"  />
+  <project name="android_hardware_amlogic_media" remote="lineage-khadas" path="hardware/amlogic/media"  />
+  <project name="android_hardware_amlogic_memtrack" remote="lineage-khadas" path="hardware/amlogic/memtrack"  />
+  <project name="android_hardware_amlogic_wifi" remote="lineage-khadas" path="hardware/amlogic/wifi"  />
+  <project name="android_frameworks_hardware_interfaces" remote="lineage-khadas" path="frameworks/hardware/interfaces" />
+  <project name="android_prebuilts_abi-dumps_vndk" remote="lineage-khadas" path="prebuilts/abi-dumps/vndk" />
+  <project name="android_system_bt" remote="lineage-khadas" path="system/bt" />
+  <project name="android_vendor_amlogic_external_ffmpeg" remote="lineage-khadas" path="vendor/amlogic/common/external/ffmpeg"  />
+  <project name="android_vendor_amlogic_external_libtiff" remote="lineage-khadas" path="vendor/amlogic/common/external/libtiff"  />
+  <project name="android_vendor_amlogic_frameworks" remote="lineage-khadas" path="vendor/amlogic/common/frameworks"  />
+  <project name="android_vendor_amlogic_frameworks_av" remote="lineage-khadas" path="vendor/amlogic/common/frameworks/av"  />
+  <project name="android_vendor_amlogic_prebuilt_libmedia" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmedia"  />
+  <project name="android_hardware_amlogic_hwcomposer" remote="lineage-khadas" path="hardware/amlogic/hwcomposer"  />
+
+  <!-- khadas projects -->
   <project name="android_device_khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
   <project name="android_vendor_amlogic_apps_IrBlaster" path="vendor/amlogic/common/apps/IrBlaster"  />
   <project name="android_vendor_amlogic_external_dvb" path="vendor/amlogic/common/external/dvb"  />
@@ -105,7 +127,6 @@
   <project name="android_external_f2fs-tools" path="external/f2fs-tools" />
   <project name="android_external_fdlibm" path="external/fdlibm" />
   <project name="android_external_fec" path="external/fec" />
-  <project name="android_vendor_amlogic_external_ffmpeg" path="vendor/amlogic/common/external/ffmpeg"  />
   <project name="android_external_fio" path="external/fio"  />
   <project name="android_external_flac" path="external/flac"  />
   <project name="android_external_flatbuffers" path="external/flatbuffers"  />
@@ -373,14 +394,11 @@
   <project name="android_external_zlib" path="external/zlib" />
   <project name="android_external_zopfli" path="external/zopfli" />
   <project name="android_external_zxing" path="external/zxing" />
-  <project name="android_frameworks_av" path="frameworks/av" />
-  <project name="android_frameworks_base" path="frameworks/base" />
   <project name="android_frameworks_compile_libbcc" path="frameworks/compile/libbcc" />
   <project name="android_frameworks_compile_mclinker" path="frameworks/compile/mclinker" />
   <project name="android_frameworks_compile_slang" path="frameworks/compile/slang" />
   <project name="android_frameworks_data-binding" path="frameworks/data-binding" />
   <project name="android_frameworks_ex" path="frameworks/ex" />
-  <project name="android_frameworks_hardware_interfaces" path="frameworks/hardware/interfaces" />
   <project name="android_frameworks_layoutlib" path="frameworks/layoutlib" />
   <project name="android_frameworks_minikin" path="frameworks/minikin" />
   <project name="android_frameworks_ml" path="frameworks/ml" />
@@ -409,26 +427,18 @@
   <project name="android_frameworks_support" path="frameworks/support" />
   <project name="android_frameworks_wilhelm" path="frameworks/wilhelm" />
   <project name="android_hardware_akm" path="hardware/akm" />
-  <project name="android_hardware_amlogic_LibAudio" path="hardware/amlogic/LibAudio"  />
-  <project name="android_hardware_amlogic_audio" path="hardware/amlogic/audio"  />
-  <project name="android_hardware_amlogic_bluetooth" path="hardware/amlogic/bluetooth"  />
   <project name="android_hardware_amlogic_bootctrl" path="hardware/amlogic/bootctrl"  />
-  <project name="android_hardware_amlogic_camera" path="hardware/amlogic/camera"  />
   <project name="android_hardware_amlogic_consumerir" path="hardware/amlogic/consumerir"  />
   <project name="android_hardware_amlogic_gatekeeper" path="hardware/amlogic/gatekeeper"  />
   <project name="android_hardware_amlogic_gralloc" path="hardware/amlogic/gralloc"  />
   <project name="android_hardware_amlogic_hdmi_cec" path="hardware/amlogic/hdmi_cec"  />
-  <project name="android_hardware_amlogic_hwcomposer" path="hardware/amlogic/hwcomposer"  />
   <project name="android_hardware_amlogic_keymaster" path="hardware/amlogic/keymaster"  />
   <project name="android_hardware_amlogic_lights" path="hardware/amlogic/lights"  />
-  <project name="android_hardware_amlogic_media" path="hardware/amlogic/media"  />
   <project name="android_hardware_amlogic_media_modules" path="hardware/amlogic/media_modules"  />
-  <project name="android_hardware_amlogic_memtrack" path="hardware/amlogic/memtrack"  />
   <project name="android_hardware_amlogic_power" path="hardware/amlogic/power"  />
   <project name="android_hardware_amlogic_screen_source" path="hardware/amlogic/screen_source"  />
   <project name="android_hardware_amlogic_thermal" path="hardware/amlogic/thermal"  />
   <project name="android_hardware_amlogic_tv_input" path="hardware/amlogic/tv_input"  />
-  <project name="android_hardware_amlogic_wifi" path="hardware/amlogic/wifi"  />
   <project name="android_vendor_amlogic_gpu" path="vendor/amlogic/common/gpu"  />
   <project name="android_vendor_amlogic_gpu-lib" path="vendor/amlogic/common/gpu/lib" />
   <project name="android_vendor_amlogic_arm_isp" path="vendor/amlogic/common/arm_isp"  />
@@ -465,7 +475,6 @@
   <project name="android_hardware_wifi_realtek_drivers_8822bu" path="hardware/wifi/realtek/drivers/8822bu"  />
   <project name="android_libcore" path="libcore" />
   <project name="android_libnativehelper" path="libnativehelper" />
-  <project name="android_vendor_amlogic_FactoryTest" path="vendor/amlogic/common/apps/FactoryTest" />
   <project name="android_vendor_amlogic_apps_AppInstaller" path="vendor/amlogic/common/apps/AppInstaller"  />
   <project name="android_vendor_amlogic_apps_DLNA" path="vendor/amlogic/common/apps/DLNA"  />
   <project name="android_vendor_amlogic_apps_DroidLiveTv" path="vendor/amlogic/common/apps/DroidLiveTv"  />
@@ -476,7 +485,6 @@
   <project name="android_vendor_amlogic_apps_OTAUpgrade2" path="vendor/amlogic/common/apps/OTAUpgrade2"  />
   <project name="android_vendor_amlogic_apps_PPPoE" path="vendor/amlogic/common/apps/PPPoE"  />
   <project name="android_vendor_amlogic_apps_RemoteIME" path="vendor/amlogic/common/apps/RemoteIME"  />
-  <project name="android_vendor_amlogic_apps_SubTitle" path="vendor/amlogic/common/apps/SubTitle"  />
   <project name="android_vendor_amlogic_apps_TvInput" path="vendor/amlogic/common/apps/TvInput"  />
   <project name="android_vendor_amlogic_apps_VideoPlayer" path="vendor/amlogic/common/apps/VideoPlayer"  />
   <project name="android_packages_apps_BasicSmsReceiver" path="packages/apps/BasicSmsReceiver" />
@@ -573,7 +581,6 @@
   <project name="android_pdk" path="pdk" />
   <project name="android_platform_testing" path="platform_testing" />
   <project name="android_prebuilts_abi-dumps_ndk" path="prebuilts/abi-dumps/ndk" />
-  <project name="android_prebuilts_abi-dumps_vndk" path="prebuilts/abi-dumps/vndk" />
   <project name="android_prebuilts_build-tools" path="prebuilts/build-tools" />
   <project name="android_prebuilts_checkcolor" path="prebuilts/checkcolor" />
   <project name="android_prebuilts_checkstyle" path="prebuilts/checkstyle" />
@@ -615,7 +622,6 @@
   <project name="platform/prebuilts/tools" remote="aosp" path="prebuilts/tools" revision="b9b8ab7896ef1ae694551dda56fb4f9c0e62aee7" upstream="refs/tags/android-9.0.0_r3" />
   <project name="android_prebuilts_vndk_v27" path="prebuilts/vndk/v27" />
   <project name="android_sdk" path="sdk" />
-  <project name="android_system_bt" path="system/bt" />
   <project name="android_system_ca-certificates" path="system/ca-certificates" />
   <project name="android_system_chre" path="system/chre" />
   <project name="android_system_connectivity_wificond" path="system/connectivity/wificond" />
@@ -680,16 +686,12 @@
   <project name="android_vendor_amlogic_apps_VendorOverlay" path="vendor/amlogic/common/apps/VendorOverlay"  />
   <project name="android_vendor_amlogic_external_exfat" path="vendor/amlogic/common/external/exfat"  />
   <project name="android_vendor_amlogic_external_icu" path="vendor/amlogic/common/external/icu"  />
-  <project name="android_vendor_amlogic_external_libtiff" path="vendor/amlogic/common/external/libtiff"  />
   <project name="android_vendor_amlogic_external_recovery" path="vendor/amlogic/common/external/recovery"  />
-  <project name="android_vendor_amlogic_frameworks" path="vendor/amlogic/common/frameworks"  />
-  <project name="android_vendor_amlogic_frameworks_av" path="vendor/amlogic/common/frameworks/av"  />
   <project name="android_vendor_amlogic_frameworks_pppoe" path="vendor/amlogic/common/frameworks/pppoe"  />
   <project name="android_vendor_amlogic_interfaces" path="vendor/amlogic/common/interfaces"  />
   <project name="android_vendor_amlogic_hdcp" path="vendor/amlogic/common/hdcp"  />
   <project name="android_vendor_amlogic_LibTsPlayer" path="vendor/amlogic/common/LibTsPlayer"  />
   <project name="android_vendor_amlogic_prebuilt" path="vendor/amlogic/common/prebuilt"  />
-  <project name="android_vendor_amlogic_prebuilt_libmedia" path="vendor/amlogic/common/prebuilt/libmedia"  />
   <project name="android_vendor_amlogic_prebuilt_libmediadrm" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
   <project name="android_vendor_amlogic_prebuilt_libstagefrighthw" path="vendor/amlogic/common/prebuilt/libstagefrighthw"  />
   <project name="android_vendor_amlogic_provision" path="vendor/amlogic/common/provision"  />
