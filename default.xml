@@ -15,17 +15,18 @@
   <project name="android_hardware_amlogic_media" remote="lineage-khadas" path="hardware/amlogic/media"  />
   <project name="android_hardware_amlogic_memtrack" remote="lineage-khadas" path="hardware/amlogic/memtrack"  />
   <project name="android_hardware_amlogic_wifi" remote="lineage-khadas" path="hardware/amlogic/wifi"  />
-  <project name="android_frameworks_hardware_interfaces" remote="lineage-khadas" path="frameworks/hardware/interfaces" />
   <project name="android_prebuilts_abi-dumps_vndk" remote="lineage-khadas" path="prebuilts/abi-dumps/vndk" />
   <project name="android_system_bt" remote="lineage-khadas" path="system/bt" />
-  <project name="android_vendor_amlogic_external_ffmpeg" remote="lineage-khadas" path="vendor/amlogic/common/external/ffmpeg"  />
-  <project name="android_vendor_amlogic_external_libtiff" remote="lineage-khadas" path="vendor/amlogic/common/external/libtiff"  />
-  <project name="android_vendor_amlogic_frameworks" remote="lineage-khadas" path="vendor/amlogic/common/frameworks"  />
-  <project name="android_vendor_amlogic_frameworks_av" remote="lineage-khadas" path="vendor/amlogic/common/frameworks/av"  />
-  <project name="android_vendor_amlogic_prebuilt_libmedia" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmedia"  />
+  <project name="android_vendor_amlogic_common_external_ffmpeg" remote="lineage-khadas" path="vendor/amlogic/common/external/ffmpeg"  />
+  <project name="android_vendor_amlogic_common_external_libtiff" remote="lineage-khadas" path="vendor/amlogic/common/external/libtiff"  />
+  <project name="android_vendor_amlogic_common_frameworks" remote="lineage-khadas" path="vendor/amlogic/common/frameworks"  />
+  <project name="android_vendor_amlogic_common_frameworks_av" remote="lineage-khadas" path="vendor/amlogic/common/frameworks/av"  />
+  <project name="android_vendor_amlogic_common_prebuilt_libmedia" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmedia"  />
   <project name="android_hardware_amlogic_hwcomposer" remote="lineage-khadas" path="hardware/amlogic/hwcomposer"  />
+  <project name="android_hardware_interfaces" remote="lineage-khadas"  path="hardware/interfaces" />
 
   <!-- khadas projects -->
+    <project name="android_frameworks_hardware_interfaces" path="frameworks/hardware/interfaces" />
   <project name="android_device_khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
   <project name="android_vendor_amlogic_apps_IrBlaster" path="vendor/amlogic/common/apps/IrBlaster"  />
   <project name="android_vendor_amlogic_external_dvb" path="vendor/amlogic/common/external/dvb"  />
@@ -444,7 +445,7 @@
   <project name="android_vendor_amlogic_arm_isp" path="vendor/amlogic/common/arm_isp"  />
   <project name="android_hardware_broadcom_libbt" path="hardware/broadcom/libbt" />
   <project name="android_hardware_broadcom_wlan" path="hardware/broadcom/wlan" />
-  <project name="android_hardware_interfaces" path="hardware/interfaces" />
+
   <project name="android_hardware_libhardware" path="hardware/libhardware" />
   <project name="android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" />
   <project name="android_hardware_qcom_neuralnetworks_hvxservice" path="hardware/qcom/neuralnetworks/hvxservice" />
