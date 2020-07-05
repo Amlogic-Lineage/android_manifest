@@ -17,6 +17,7 @@
   <project name="android_hardware_amlogic_wifi" remote="lineage-khadas" path="hardware/amlogic/wifi"  />
   <project name="android_prebuilts_abi-dumps_vndk" remote="lineage-khadas" path="prebuilts/abi-dumps/vndk" />
   <project name="android_system_bt" remote="lineage-khadas" path="system/bt" />
+  <project name="android_vendor_amlogic_common_external_dvb" remote="lineage-khadas" path="vendor/amlogic/common/external/dvb"  />
   <project name="android_vendor_amlogic_common_external_ffmpeg" remote="lineage-khadas" path="vendor/amlogic/common/external/ffmpeg"  />
   <project name="android_vendor_amlogic_common_external_libtiff" remote="lineage-khadas" path="vendor/amlogic/common/external/libtiff"  />
   <project name="android_vendor_amlogic_common_frameworks" remote="lineage-khadas" path="vendor/amlogic/common/frameworks"  />
@@ -29,7 +30,6 @@
     <project name="android_frameworks_hardware_interfaces" path="frameworks/hardware/interfaces" />
   <project name="android_device_khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
   <project name="android_vendor_amlogic_apps_IrBlaster" path="vendor/amlogic/common/apps/IrBlaster"  />
-  <project name="android_vendor_amlogic_external_dvb" path="vendor/amlogic/common/external/dvb"  />
   <project name="linux" path="common"  />
   <project name="android_kernel_configs" path="kernel/configs" />
   <project name="android_kernel_tests" path="kernel/tests" />
