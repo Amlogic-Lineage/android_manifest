@@ -131,7 +131,6 @@
   <project name="android_vendor_amlogic_hdcp" remote="khadas" path="vendor/amlogic/common/hdcp"  />
   <project name="android_vendor_amlogic_interfaces" remote="khadas" path="vendor/amlogic/common/interfaces"  />
   <project name="android_vendor_amlogic_ir_tools" remote="khadas" path="vendor/amlogic/common/ir_tools"  />
-  <project name="android_vendor_amlogic_LibTsPlayer" remote="khadas" path="vendor/amlogic/common/LibTsPlayer"  />
   <project name="android_vendor_amlogic_npu" remote="khadas" path="vendor/amlogic/common/npu"  />
   <project name="android_vendor_amlogic_prebuilt_libmediadrm" remote="khadas" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
   <project name="android_vendor_amlogic_prebuilt_libstagefrighthw" remote="khadas" path="vendor/amlogic/common/prebuilt/libstagefrighthw"  />
