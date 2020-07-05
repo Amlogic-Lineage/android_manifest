@@ -37,8 +37,6 @@
     <linkfile dest="build/target" src="target"/>
     <linkfile dest="build/tools" src="tools"/>
   </project>
-
-  <project name="android_build_kati" remote="khadas" path="build/kati" />
   <project name="android_build_soong" remote="khadas" path="build/soong" >
     <linkfile dest="Android.bp" src="root.bp"/>
     <linkfile dest="bootstrap.bash" src="bootstrap.bash"/>
@@ -49,15 +47,11 @@
   <project name="android_external_e2fsprogs" remote="khadas" path="external/e2fsprogs" />
   <project name="android_external_i2c-tools" remote="khadas" path="external/i2c-tools" />
   <project name="android_external_libvpx" remote="khadas" path="external/libvpx" />
-  <project name="android_external_libyuv" remote="khadas" path="external/libyuv" />
-  <project name="android_external_sqlite" remote="khadas" path="external/sqlite" />
   <project name="android_external_tinyalsa" remote="khadas" path="external/tinyalsa" />
   <project name="android_external_wpa_supplicant_8" remote="khadas" path="external/wpa_supplicant_8"/>
-  <project name="android_frameworks_hardware_interfaces" remote="khadas" path="frameworks/hardware/interfaces" />
   <project name="android_frameworks_native" remote="khadas" path="frameworks/native" />
   <project name="android_frameworks_opt_net_ethernet" remote="khadas" path="frameworks/opt/net/ethernet" />
   <project name="android_frameworks_opt_net_wifi" remote="khadas" path="frameworks/opt/net/wifi" />
-  <project name="android_hardware_akm" remote="khadas" path="hardware/akm" />
   <project name="android_hardware_amlogic_bootctrl" remote="khadas" path="hardware/amlogic/bootctrl"  />
   <project name="android_hardware_amlogic_consumerir" remote="khadas" path="hardware/amlogic/consumerir"  />
   <project name="android_hardware_amlogic_gatekeeper" remote="khadas" path="hardware/amlogic/gatekeeper"  />
@@ -70,8 +64,6 @@
   <project name="android_hardware_amlogic_screen_source" remote="khadas" path="hardware/amlogic/screen_source"  />
   <project name="android_hardware_amlogic_thermal" remote="khadas" path="hardware/amlogic/thermal"  />
   <project name="android_hardware_amlogic_tv_input" remote="khadas" path="hardware/amlogic/tv_input"  />
-  <project name="android_hardware_broadcom_libbt" remote="khadas" path="hardware/broadcom/libbt" />
-  <project name="android_hardware_libhardware_legacy" remote="khadas" path="hardware/libhardware_legacy" />
   <project name="android_hardware_libhardware" remote="khadas" path="hardware/libhardware" />
   <project name="android_hardware_qcom_neuralnetworks_hvxservice" remote="khadas" path="hardware/qcom/neuralnetworks/hvxservice" />
   <project name="android_hardware_wifi_broadcom_drivers_ap6xxx" remote="khadas" path="hardware/wifi/broadcom/drivers/ap6xxx"  />
@@ -99,23 +91,11 @@
   <project name="android_hardware_wifi_realtek_drivers_8822bu" remote="khadas" path="hardware/wifi/realtek/drivers/8822bu"  />
   <project name="android_packages_apps_Bluetooth" remote="khadas" path="packages/apps/Bluetooth" />
   <project name="android_packages_apps_Camera2" remote="khadas" path="packages/apps/Camera2" />
-  <project name="android_packages_apps_DevCamera" remote="khadas" path="packages/apps/DevCamera" />
-  <project name="android_packages_apps_Dialer" remote="khadas" path="packages/apps/Dialer" />
-  <project name="android_packages_apps_Email" remote="khadas" path="packages/apps/Email" />
-  <project name="android_packages_apps_ExactCalculator" remote="khadas" path="packages/apps/ExactCalculator" />
-  <project name="android_packages_apps_Gallery" remote="khadas" path="packages/apps/Gallery" />
-  <project name="android_packages_apps_Launcher2" remote="khadas" path="packages/apps/Launcher2" />
   <project name="android_packages_apps_Launcher3" remote="khadas" path="packages/apps/Launcher3" />
-  <project name="android_packages_apps_Messaging" remote="khadas" path="packages/apps/Messaging" />
-  <project name="android_packages_apps_QuickSearchBox" remote="khadas" path="packages/apps/QuickSearchBox" />
   <project name="android_packages_apps_Settings" remote="khadas" path="packages/apps/Settings" />
-  <project name="android_packages_apps_Stk" remote="khadas" path="packages/apps/Stk" />
-  <project name="android_packages_apps_Traceur" remote="khadas" path="packages/apps/Traceur" />
   <project name="android_packages_apps_TV" remote="khadas" path="packages/apps/TV"  />
   <project name="android_packages_apps_TvSettings" remote="khadas" path="packages/apps/TvSettings" />
-  <project name="android_packages_apps_UnifiedEmail" remote="khadas" path="packages/apps/UnifiedEmail" />
   <project name="android_packages_inputmethods_LatinIME" remote="khadas" path="packages/inputmethods/LatinIME" />
-  <project name="android_packages_inputmethods_OpenWnn" remote="khadas" path="packages/inputmethods/OpenWnn" />
   <project name="android_system_core" remote="khadas" path="system/core" />
   <project name="android_system_libhidl" remote="khadas" path="system/libhidl" />
   <project name="android_system_media" remote="khadas" path="system/media" />
@@ -172,6 +152,7 @@
   
     <!-- Unchanged AOSP projects -->
   <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" />
+  <project path="build/kati" name="platform/build/kati" groups="pdk,tradefed" />
   <project path="art" name="platform/art" groups="pdk" />
   <project path="bionic" name="platform/bionic" groups="pdk" />
   <project path="compatibility/cdd" name="platform/compatibility/cdd" groups="pdk" />
@@ -185,7 +166,6 @@
   <project path="external/abi-compliance-checker" name="platform/external/abi-compliance-checker" groups="pdk" />
   <project path="external/abi-dumper" name="platform/external/abi-dumper" groups="pdk" />
   <project path="external/adhd" name="platform/external/adhd" groups="pdk" />
-  
   <project path="external/android-clat" name="platform/external/android-clat" groups="pdk" />
   <project path="external/androidplot" name="platform/external/androidplot" groups="pdk" />
   <project path="external/annotation-tools" name="platform/external/annotation-tools" groups="pdk" />
@@ -347,6 +327,7 @@
   <project path="external/libxcam" name="platform/external/libxcam" groups="pdk" />
   <project path="external/libxkbcommon" name="platform/external/libxkbcommon" groups="pdk" />
   <project path="external/libxml2" name="platform/external/libxml2" groups="pdk,libxml2" />
+  <project path="external/libyuv" name="platform/external/libyuv" groups="pdk,libyuv" />
   <project path="external/linux-kselftest" name="platform/external/linux-kselftest" groups="vts,pdk" />
   <project path="external/lisa" name="platform/external/lisa" groups="pdk" />
   <project path="external/llvm" name="platform/external/llvm" groups="pdk" />
@@ -460,6 +441,7 @@
   <project path="external/sonivox" name="platform/external/sonivox" groups="pdk" />
   <project path="external/speex" name="platform/external/speex" groups="pdk" />
   <project path="external/spirv-llvm" name="platform/external/spirv-llvm" groups="pdk" />
+  <project path="external/sqlite" name="platform/external/sqlite" groups="pdk" />
   <project path="external/squashfs-tools" name="platform/external/squashfs-tools" groups="pdk" />
   <project path="external/strace" name="platform/external/strace" groups="pdk" />
   <project path="external/stressapptest" name="platform/external/stressapptest" groups="pdk" />
@@ -509,7 +491,7 @@
   <project path="frameworks/compile/slang" name="platform/frameworks/compile/slang" groups="pdk" />
   <project path="frameworks/data-binding" name="platform/frameworks/data-binding" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/ex" name="platform/frameworks/ex" groups="pdk-cw-fs,pdk-fs" />
-  
+  <project path="frameworks/hardware/interfaces" name="platform/frameworks/hardware/interfaces" groups="pdk" />
   <project path="frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/minikin" name="platform/frameworks/minikin" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/ml" name="platform/frameworks/ml" groups="pdk" />
@@ -534,7 +516,11 @@
   <project path="frameworks/rs" name="platform/frameworks/rs" groups="pdk" />
   <project path="frameworks/support" name="platform/frameworks/support" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" />
+  <project path="hardware/akm" name="platform/hardware/akm" groups="pdk" />
+  <project path="hardware/broadcom/libbt"  name="platform/hardware/broadcom/libbt" groups="pdk" />
   <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="pdk,broadcom_wlan" />
+  <project path="hardware/google/apf" name="platform/hardware/google/apf" groups="pdk" />
+  <project path="hardware/libhardware_legacy"  name="platform/hardware/libhardware_legacy" groups="pdk" />
   <project path="hardware/ril" name="platform/hardware/ril" groups="pdk" />
   <project path="kernel/configs" name="kernel/configs" groups="vts,pdk" />
   <project path="kernel/tests" name="kernel/tests" />
@@ -542,6 +528,7 @@
   <project path="libnativehelper" name="platform/libnativehelper" groups="pdk" />
   <project path="packages/apps/BasicSmsReceiver" name="platform/packages/apps/BasicSmsReceiver" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/apps/Browser2" name="platform/packages/apps/Browser2" groups="pdk-fs" />
+  <project path="packages/apps/DevCamera" name="platform/packages/apps/DevCamera" groups="pdk" />
   <project path="packages/apps/Calendar" name="platform/packages/apps/Calendar" groups="pdk-fs" />
   <project path="packages/apps/Car/Dialer" name="platform/packages/apps/Car/Dialer" groups="pdk-fs" />
   <project path="packages/apps/Car/Hvac" name="platform/packages/apps/Car/Hvac" groups="pdk-fs" />
@@ -562,13 +549,19 @@
   <project path="packages/apps/CertInstaller" name="platform/packages/apps/CertInstaller" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/apps/Contacts" name="platform/packages/apps/Contacts" groups="pdk-fs" />
   <project path="packages/apps/DeskClock" name="platform/packages/apps/DeskClock" groups="pdk-fs" />
+  <project path="packages/apps/Dialer" name="platform/packages/apps/Dialer" groups="pdk-fs" />
   <project path="packages/apps/DocumentsUI" name="platform/packages/apps/DocumentsUI" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/Email" name="platform/packages/apps/Email" groups="pdk-fs" />
   <project path="packages/apps/EmergencyInfo" name="platform/packages/apps/EmergencyInfo" groups="pdk-fs" />
+  <project path="packages/apps/ExactCalculator" name="platform/packages/apps/ExactCalculator" groups="pdk-fs" />
+  <project path="packages/apps/Gallery" name="platform/packages/apps/Gallery" groups="pdk-fs" />
   <project path="packages/apps/Gallery2" name="platform/packages/apps/Gallery2" groups="pdk-fs" />
   <project path="packages/apps/HTMLViewer" name="platform/packages/apps/HTMLViewer" groups="pdk-fs" />
   <project path="packages/apps/KeyChain" name="platform/packages/apps/KeyChain" groups="pdk-fs" />
+  <project path="packages/apps/Launcher2" name="platform/packages/apps/Launcher2" groups="pdk-fs" />
   <project path="packages/apps/LegacyCamera" name="platform/packages/apps/LegacyCamera" groups="pdk-fs" />
   <project path="packages/apps/ManagedProvisioning" name="platform/packages/apps/ManagedProvisioning" groups="pdk-fs" />
+  <project path="packages/apps/Messaging" name="platform/packages/apps/Messaging" groups="pdk-fs" />
   <project path="packages/apps/MusicFX" name="platform/packages/apps/MusicFX" groups="pdk-fs" />
   <project path="packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="apps_nfc,pdk-fs" />
   <project path="packages/apps/OneTimeInitializer" name="platform/packages/apps/OneTimeInitializer" groups="pdk-fs" />
@@ -576,19 +569,24 @@
   <project path="packages/apps/PhoneCommon" name="platform/packages/apps/PhoneCommon" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/apps/Protips" name="platform/packages/apps/Protips" groups="pdk-fs" />
   <project path="packages/apps/Provision" name="platform/packages/apps/Provision" groups="pdk-fs" />
+  <project path="packages/apps/QuickSearchBox" name="platform/packages/apps/QuickSearchBox" groups="pdk-fs" />
   <project path="packages/apps/SafetyRegulatoryInfo" name="platform/packages/apps/SafetyRegulatoryInfo" groups="pdk-fs" />
   <project path="packages/apps/SecureElement" name="platform/packages/apps/SecureElement" groups="apps_se,pdk-fs" />
   <project path="packages/apps/SettingsIntelligence" name="platform/packages/apps/SettingsIntelligence" groups="pdk-fs" />
   <project path="packages/apps/SoundRecorder" name="platform/packages/apps/SoundRecorder" groups="pdk-fs" />
   <project path="packages/apps/SpareParts" name="platform/packages/apps/SpareParts" groups="pdk-fs" />
   <project path="packages/apps/StorageManager" name="platform/packages/apps/StorageManager" groups="pdk-fs" />
+  <project path="packages/apps/Stk" name="platform/packages/apps/Stk" groups="apps_stk,pdk-fs" />
   <project path="packages/apps/Tag" name="platform/packages/apps/Tag" groups="pdk-fs" />
   <project path="packages/apps/Terminal" name="platform/packages/apps/Terminal" groups="pdk-fs" />
   <project path="packages/apps/Test/connectivity" name="platform/packages/apps/Test/connectivity" groups="pdk" />
   <project path="packages/apps/TimeZoneData" name="platform/packages/apps/TimeZoneData" groups="pdk" />
   <project path="packages/apps/TimeZoneUpdater" name="platform/packages/apps/TimeZoneUpdater" groups="pdk" />
+  <project path="packages/apps/Traceur" name="platform/packages/apps/Traceur" groups="pdk-fs" />
+  <project path="packages/apps/UnifiedEmail" name="platform/packages/apps/UnifiedEmail" groups="pdk-fs" />
   <project path="packages/apps/WallpaperPicker" name="platform/packages/apps/WallpaperPicker" groups="pdk-fs" />
   <project path="packages/experimental" name="platform/packages/experimental" />
+  <project path="packages/inputmethods/OpenWnn" name="platform/packages/inputmethods/OpenWnn" groups="pdk-fs" />
   <project path="packages/providers/ApplicationsProvider" name="platform/packages/providers/ApplicationsProvider" groups="pdk-fs" />
   <project path="packages/providers/BlockedNumberProvider" name="platform/packages/providers/BlockedNumberProvider" groups="pdk-fs" />
   <project path="packages/providers/BookmarkProvider" name="platform/packages/providers/BookmarkProvider" groups="pdk-fs" />
@@ -697,15 +695,12 @@
   <project path="tools/dexter" name="platform/tools/dexter" groups="tools,pdk-fs" />
   <project path="tools/external/fat32lib" name="platform/tools/external/fat32lib" groups="tools" />
   <project path="tools/external/gradle" name="platform/tools/external/gradle" groups="tools" clone-depth="1" />
-
   <project path="tools/loganalysis" name="platform/tools/loganalysis" groups="nopresubmit,pdk,tradefed" />
   <project path="tools/metalava" name="platform/tools/metalava" groups="pdk,tools" />
-
   <project path="tools/repohooks" name="platform/tools/repohooks" groups="adt-infra,cts,developers,motodev,pdk,tools,tradefed" />
   <project path="tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" />
   <project path="tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" />
   <project path="tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" />
-
   <project name="platform/external/chromium-webview" remote="aosp" path="external/chromium-webview" revision="f1a9488d2ad48060c7c736b7ff48b189da3abf60" upstream="refs/tags/android-9.0.0_r3" />
 
 
