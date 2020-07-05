@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="https://android.googlesource.com/" name="aosp" review="https://android.googlesource.com/"/>
-  <remote fetch="https://github.com/khadas/" name="github"/>
+  <remote fetch="https://github.com/khadas/" name="khadas" revision="khadas-vims-pie" />
   <remote fetch="https://github.com/Amlogic-Lineage/" revision="khadas-vims-pie_64" name="lineage-khadas"/>
-  <default remote="github" revision="khadas-vims-pie" sync-c="true" sync-j="4"/>
+  <default remote="aosp" revision="refs/tags/android-9.0.0_r3"  sync-c="true" sync-j="4"/>
 
   <!-- projects patched for 64bits compatibility -->
   <project name="android_frameworks_base" remote="lineage-khadas" path="frameworks/base" />
@@ -27,17 +27,8 @@
   <project name="android_hardware_interfaces" remote="lineage-khadas"  path="hardware/interfaces" />
 
   <!-- khadas projects -->
-    <project name="android_frameworks_hardware_interfaces" path="frameworks/hardware/interfaces" />
-  <project name="android_device_khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
-  <project name="android_vendor_amlogic_apps_IrBlaster" path="vendor/amlogic/common/apps/IrBlaster"  />
-  <project name="linux" path="common"  />
-  <project name="android_kernel_configs" path="kernel/configs" />
-  <project name="android_kernel_tests" path="kernel/tests" />
-  <project name="android_vendor_amlogic_ir_tools" path="vendor/amlogic/common/ir_tools"  />
-  <project name="android_art" path="art" />
-  <project name="android_bionic" path="bionic" />
-  <project name="android_bootable_recovery" path="bootable/recovery" />
-  <project name="android_build_make" path="build/make" >
+
+  <project name="android_build_make" remote="khadas" path="build/make" >
     <copyfile dest="Makefile" src="core/root.mk"/>
     <linkfile dest="build/CleanSpec.mk" src="CleanSpec.mk"/>
     <linkfile dest="build/buildspec.mk.default" src="buildspec.mk.default"/>
@@ -46,664 +37,689 @@
     <linkfile dest="build/target" src="target"/>
     <linkfile dest="build/tools" src="tools"/>
   </project>
-  <project name="android_build_blueprint" path="build/blueprint" />
-  <project name="android_build_kati" path="build/kati" />
-  <project name="android_build_soong" path="build/soong" >
+
+  <project name="android_build_kati" remote="khadas" path="build/kati" />
+  <project name="android_build_soong" remote="khadas" path="build/soong" >
     <linkfile dest="Android.bp" src="root.bp"/>
     <linkfile dest="bootstrap.bash" src="bootstrap.bash"/>
   </project>
-  <project name="android_compatibility_cdd" path="compatibility/cdd" />
-  <project name="platform/cts" remote="aosp" path="cts" revision="56b70b5762a6e32f0af015e219c2eca533dfcb26" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_dalvik" path="dalvik" />
-  <project name="android_developers_build" path="developers/build" />
-  <project name="android_developers_demos" path="developers/demos" />
-  <project name="android_developers_samples_android" path="developers/samples/android" />
-  <project name="android_development" path="development" />
-  <project name="android_external_i2c-tools" path="external/i2c-tools" />
-  <project name="android_external_ImageMagick" path="external/ImageMagick" />
-  <project name="android_external_Microsoft-GSL" path="external/Microsoft-GSL" />
-  <project name="android_external_aac" path="external/aac" />
-  <project name="android_external_abi-compliance-checker" path="external/abi-compliance-checker" />
-  <project name="android_external_abi-dumper" path="external/abi-dumper" />
-  <project name="android_external_adhd" path="external/adhd" />
-  <project name="android_external_android-clat" path="external/android-clat" />
-  <project name="android_external_androidplot" path="external/androidplot" />
-  <project name="android_external_annotation-tools" path="external/annotation-tools" />
-  <project name="android_external_ant-glob" path="external/ant-glob" />
-  <project name="android_external_antlr" path="external/antlr" />
-  <project name="android_external_apache-commons-math" path="external/apache-commons-math" />
-  <project name="android_external_apache-harmony" path="external/apache-harmony" />
-  <project name="android_external_apache-http" path="external/apache-http" />
-  <project name="android_external_apache-xml" path="external/apache-xml" />
-  <project name="android_external_archive-patcher" path="external/archive-patcher" />
-  <project name="android_external_arm-neon-tests" path="external/arm-neon-tests" />
-  <project name="android_external_autotest" path="external/autotest" />
-  <project name="android_external_avb" path="external/avb" />
-  <project name="android_external_bart" path="external/bart" />
-  <project name="android_external_blktrace" path="external/blktrace" />
-  <project name="android_external_boringssl" path="external/boringssl" />
-  <project name="android_external_bouncycastle" path="external/bouncycastle" />
-  <project name="android_external_brotli" path="external/brotli" />
-  <project name="android_external_bsdiff" path="external/bsdiff" />
-  <project name="android_vendor_amlogic_external_busybox" path="vendor/amlogic/common/external/busybox"   />
-  <project name="android_external_bzip2" path="external/bzip2" />
-  <project name="android_external_caliper" path="external/caliper" />
-  <project name="android_external_capstone" path="external/capstone" />
-  <project name="android_external_cblas" path="external/cblas" />
-  <project name="android_external_chromium-libpac" path="external/chromium-libpac" />
-  <project name="android_external_chromium-trace" path="external/chromium-trace" />
-  <project name="platform/external/chromium-webview" remote="aosp" path="external/chromium-webview" revision="f1a9488d2ad48060c7c736b7ff48b189da3abf60" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_external_clang" path="external/clang" />
-  <project name="android_external_cmockery" path="external/cmockery" />
-  <project name="android_external_cn-cbor" path="external/cn-cbor" />
-  <project name="android_external_compiler-rt" path="external/compiler-rt" />
-  <project name="android_external_conscrypt" path="external/conscrypt" />
-  <project name="android_external_crcalc" path="external/crcalc" />
-  <project name="android_external_cros_system_api" path="external/cros/system_api" />
-  <project name="android_external_curl" path="external/curl" />
-  <project name="android_external_dagger2" path="external/dagger2" />
-  <project name="android_external_deqp" path="external/deqp" />
-  <project name="android_external_desugar" path="external/desugar" />
-  <project name="android_external_devlib" path="external/devlib" />
-  <project name="android_external_dexmaker" path="external/dexmaker" />
-  <project name="android_external_dhcpcd-6.8.2" path="external/dhcpcd-6.8.2" />
-  <project name="android_external_dlmalloc" path="external/dlmalloc" />
-  <project name="android_external_dng_sdk" path="external/dng_sdk" />
-  <project name="android_external_dnsmasq" path="external/dnsmasq" />
-  <project name="android_external_doclava" path="external/doclava" />
-  <project name="android_external_drm_gralloc" path="external/drm_gralloc" />
-  <project name="android_external_drm_hwcomposer" path="external/drm_hwcomposer" />
-  <project name="android_external_droiddriver" path="external/droiddriver" />
-  <project name="android_external_drrickorang" path="external/drrickorang" />
-  <project name="android_external_dtc" path="external/dtc" />
-  <project name="android_external_e2fsprogs" path="external/e2fsprogs" />
-  <project name="android_external_easymock" path="external/easymock" />
-  <project name="android_external_eigen" path="external/eigen" />
-  <project name="android_external_elfutils" path="external/elfutils" />
-  <project name="android_external_emma" path="external/emma" />
-  <project name="android_external_error_prone" path="external/error_prone" />
-  <project name="android_external_esd" path="external/esd" />
-  <project name="android_external_expat" path="external/expat" />
-  <project name="android_external_eyes-free" path="external/eyes-free" />
-  <project name="android_external_f2fs-tools" path="external/f2fs-tools" />
-  <project name="android_external_fdlibm" path="external/fdlibm" />
-  <project name="android_external_fec" path="external/fec" />
-  <project name="android_external_fio" path="external/fio"  />
-  <project name="android_external_flac" path="external/flac"  />
-  <project name="android_external_flatbuffers" path="external/flatbuffers"  />
-  <project name="android_external_fonttools" path="external/fonttools"  />
-  <project name="android_external_freetype" path="external/freetype"  />
-  <project name="android_external_fsck_msdos" path="external/fsck_msdos"  />
-  <project name="android_external_gemmlowp" path="external/gemmlowp"  />
-  <project name="android_external_gflags" path="external/gflags"  />
-  <project name="android_external_giflib" path="external/giflib"  />
-  <project name="android_external_glide" path="external/glide"  />
-  <project name="android_external_golang-protobuf" path="external/golang-protobuf"  />
-  <project name="android_external_google-api-services-storage" path="external/google-api-services-storage"  />
-  <project name="android_external_google-benchmark" path="external/google-benchmark"  />
-  <project name="platform/external/google-breakpad" remote="aosp" path="external/google-breakpad" revision="45fffffa044d245ca435abbaeaeec479375ed860" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_external_google-fonts_carrois-gothic-sc" path="external/google-fonts/carrois-gothic-sc" />
-  <project name="android_external_google-fonts_coming-soon" path="external/google-fonts/coming-soon" />
-  <project name="android_external_google-fonts_cutive-mono" path="external/google-fonts/cutive-mono" />
-  <project name="android_external_google-fonts_dancing-script" path="external/google-fonts/dancing-script" />
-  <project name="android_external_google-styleguide" path="external/google-styleguide" />
-  <project name="android_external_google-tv-pairing-protocol" path="external/google-tv-pairing-protocol" />
-  <project name="android_external_googletest" path="external/googletest" />
-  <project name="android_external_gptfdisk" path="external/gptfdisk" />
-  <project name="android_external_guava" path="external/guava" />
-  <project name="android_external_guice" path="external/guice" />
-  <project name="android_external_hamcrest" path="external/hamcrest" />
-  <project name="android_external_harfbuzz_ng" path="external/harfbuzz_ng" />
-  <project name="android_external_honggfuzz" path="external/honggfuzz" />
-  <project name="android_external_hyphenation-patterns" path="external/hyphenation-patterns" />
-  <project name="android_external_icu" path="external/icu" />
-  <project name="android_external_ims" path="external/ims" />
-  <project name="android_external_iproute2" path="external/iproute2" />
-  <project name="android_external_ipsec-tools" path="external/ipsec-tools" />
-  <project name="android_external_iptables" path="external/iptables" />
-  <project name="android_external_iputils" path="external/iputils" />
-  <project name="android_external_iw" path="external/iw" />
-  <project name="android_external_jacoco" path="external/jacoco" />
-  <project name="android_external_jarjar" path="external/jarjar" />
-  <project name="android_external_javaparser" path="external/javaparser" />
-  <project name="android_external_javasqlite" path="external/javasqlite" />
-  <project name="android_external_javassist" path="external/javassist" />
-  <project name="android_external_jcommander" path="external/jcommander" />
-  <project name="android_external_jdiff" path="external/jdiff" />
-  <project name="android_external_jemalloc" path="external/jemalloc" />
-  <project name="android_external_jline" path="external/jline" />
-  <project name="android_external_jmdns" path="external/jmdns" />
-  <project name="android_external_jsilver" path="external/jsilver" />
-  <project name="android_external_jsmn" path="external/jsmn" />
-  <project name="android_external_jsoncpp" path="external/jsoncpp" />
-  <project name="android_external_jsr305" path="external/jsr305" />
-  <project name="android_external_jsr330" path="external/jsr330" />
-  <project name="android_external_junit" path="external/junit" />
-  <project name="android_external_junit-params" path="external/junit-params" />
-  <project name="android_external_kernel-headers" path="external/kernel-headers" />
-  <project name="android_external_kmod" path="external/kmod" />
-  <project name="android_external_kotlinc" path="external/kotlinc" />
-  <project name="android_external_ksoap2" path="external/ksoap2" />
-  <project name="android_vendor_amlogic_external_libaudioeffect" path="vendor/amlogic/common/external/libaudioeffect"  />
-  <project name="android_external_libavc" path="external/libavc" />
-  <project name="android_external_libbackup" path="external/libbackup" />
-  <project name="android_external_libbrillo" path="external/libbrillo" />
-  <project name="android_external_libcap" path="external/libcap" />
-  <project name="android_external_libcap-ng" path="external/libcap-ng" />
-  <project name="android_external_libchrome" path="external/libchrome" />
-  <project name="android_external_libconstrainedcrypto" path="external/libconstrainedcrypto" />
-  <project name="android_external_libcups" path="external/libcups" />
-  <project name="android_external_libcxx" path="external/libcxx" />
-  <project name="android_external_libcxxabi" path="external/libcxxabi" />
-  <project name="android_external_libdaemon" path="external/libdaemon" />
-  <project name="android_external_libdivsufsort" path="external/libdivsufsort" />
-  <project name="android_external_libdrm" path="external/libdrm" />
-  <project name="android_external_libedit" path="external/libedit" />
-  <project name="android_external_libese" path="external/libese" />
-  <project name="android_external_libevent" path="external/libevent" />
-  <project name="android_external_libexif" path="external/libexif" />
-  <project name="android_external_libffi" path="external/libffi" />
-  <project name="android_external_libgsm" path="external/libgsm" />
-  <project name="android_external_libhevc" path="external/libhevc" />
-  <project name="android_external_libjpeg-turbo" path="external/libjpeg-turbo" />
-  <project name="android_external_libldac" path="external/libldac" />
-  <project name="android_external_libmicrohttpd" path="external/libmicrohttpd" />
-  <project name="android_external_libmojo" path="external/libmojo" />
-  <project name="android_external_libmpeg2" path="external/libmpeg2" />
-  <project name="android_external_libmtp" path="external/libmtp" />
-  <project name="android_external_libnetfilter_conntrack" path="external/libnetfilter_conntrack" />
-  <project name="android_external_libnfnetlink" path="external/libnfnetlink" />
-  <project name="android_external_libnl" path="external/libnl" />
-  <project name="android_external_libogg" path="external/libogg" />
-  <project name="android_external_libopus" path="external/libopus" />
-  <project name="android_external_libpcap" path="external/libpcap" />
-  <project name="android_external_libphonenumber" path="external/libphonenumber" />
-  <project name="android_external_libpng" path="external/libpng" />
-  <project name="android_external_libtextclassifier" path="external/libtextclassifier" />
-  <project name="android_external_libunwind" path="external/libunwind" />
-  <project name="android_external_libunwind_llvm" path="external/libunwind_llvm" />
-  <project name="android_external_libusb" path="external/libusb" />
-  <project name="android_external_libusb-compat" path="external/libusb-compat" />
-  <project name="android_external_libvncserver" path="external/libvncserver" />
-  <project name="android_external_libvpx" path="external/libvpx" />
-  <project name="android_external_libvterm" path="external/libvterm" />
-  <project name="android_external_libxaac" path="external/libxaac" />
-  <project name="android_external_libxcam" path="external/libxcam" />
-  <project name="android_external_libxkbcommon" path="external/libxkbcommon" />
-  <project name="android_external_libxml2" path="external/libxml2" />
-  <project name="android_external_libyuv" path="external/libyuv" />
-  <project name="android_vendor_amlogic_external_libzvbi" path="vendor/amlogic/common/external/libzvbi"  />
-  <project name="platform/external/linux-kselftest" remote="aosp" path="external/linux-kselftest" revision="78d751ed8d5539127adc7a62bcbf91c71c6bdd3f" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_external_lisa" path="external/lisa" />
-  <project name="android_external_llvm" path="external/llvm" />
-  <project name="android_external_lmfit" path="external/lmfit" />
-  <project name="android_external_ltp" path="external/ltp" />
-  <project name="android_external_lz4" path="external/lz4" />
-  <project name="android_external_lzma" path="external/lzma" />
-  <project name="android_external_markdown" path="external/markdown" />
-  <project name="android_external_mdnsresponder" path="external/mdnsresponder" />
-  <project name="android_external_mesa3d" path="external/mesa3d" />
-  <project name="android_external_minijail" path="external/minijail" />
-  <project name="android_external_mksh" path="external/mksh" />
-  <project name="android_external_mmc-utils" path="external/mmc-utils" />
-  <project name="android_external_mockftpserver" path="external/mockftpserver" />
-  <project name="android_external_mockito" path="external/mockito" />
-  <project name="android_external_mockwebserver" path="external/mockwebserver" />
-  <project name="android_external_modp_b64" path="external/modp_b64" />
-  <project name="android_external_mp4parser" path="external/mp4parser" />
-  <project name="android_external_mtpd" path="external/mtpd" />
-  <project name="android_external_nanohttpd" path="external/nanohttpd" />
-  <project name="android_external_nanopb-c" path="external/nanopb-c" />
-  <project name="android_external_naver-fonts" path="external/naver-fonts" />
-  <project name="android_external_netcat" path="external/netcat" />
-  <project name="android_external_neven" path="external/neven" />
-  <project name="android_external_nfacct" path="external/nfacct" />
-  <project name="android_external_nist-pkits" path="external/nist-pkits" />
-  <project name="android_external_nist-sip" path="external/nist-sip" />
-  <project name="android_external_nos_host_android" path="external/nos/host/android" />
-  <project name="android_external_nos_host_generic" path="external/nos/host/generic" />
-  <project name="android_external_nos_test_system-test-harness" path="external/nos/test/system-test-harness" />
-  <project name="android_external_noto-fonts" path="external/noto-fonts" />
-  <project name="android_vendor_amlogic_external_ntfs-3g" path="vendor/amlogic/common/external/ntfs-3g"  />
-  <project name="android_external_oauth" path="external/oauth" />
-  <project name="android_external_objenesis" path="external/objenesis" />
-  <project name="android_external_oj-libjdwp" path="external/oj-libjdwp" />
-  <project name="android_external_okhttp" path="external/okhttp" />
-  <project name="android_external_one-true-awk" path="external/one-true-awk" />
-  <project name="android_external_opencv" path="external/opencv" />
-  <project name="android_external_owasp_sanitizer" path="external/owasp/sanitizer" />
-  <project name="android_external_parameter-framework" path="external/parameter-framework" />
-  <project name="android_external_pcre" path="external/pcre" />
-  <project name="android_external_pdfium" path="external/pdfium" />
-  <project name="android_external_perf_data_converter" path="external/perf_data_converter" />
-  <project name="android_external_perfetto" path="external/perfetto" />
-  <project name="android_external_piex" path="external/piex" />
-  <project name="android_external_ply" path="external/ply" />
-  <project name="android_external_ppp" path="external/ppp" />
-  <project name="android_vendor_amlogic_external_pppoe" path="vendor/amlogic/common/external/pppoe"  />
-  <project name="android_external_proguard" path="external/proguard" />
-  <project name="android_external_protobuf" path="external/protobuf" />
-  <project name="android_external_puffin" path="external/puffin" />
-  <project name="android_external_python_Pillow" path="external/python/Pillow" />
-  <project name="android_external_python_appdirs" path="external/python/appdirs" />
-  <project name="android_external_python_cachetools" path="external/python/cachetools" />
-  <project name="android_external_python_cpython2" path="external/python/cpython2" />
-  <project name="android_external_python_cpython3" path="external/python/cpython3" />
-  <project name="android_external_python_dill" path="external/python/dill" />
-  <project name="android_external_python_enum" path="external/python/enum" />
-  <project name="android_external_python_enum34" path="external/python/enum34" />
-  <project name="android_external_python_future" path="external/python/future" />
-  <project name="android_external_python_futures" path="external/python/futures" />
-  <project name="android_external_python_gapic-google-cloud-pubsub-v1" path="external/python/gapic-google-cloud-pubsub-v1" />
-  <project name="android_external_python_google-api-python-client" path="external/python/google-api-python-client" />
-  <project name="android_external_python_google-auth" path="external/python/google-auth" />
-  <project name="android_external_python_google-auth-httplib2" path="external/python/google-auth-httplib2" />
-  <project name="android_external_python_google-cloud-core" path="external/python/google-cloud-core" />
-  <project name="android_external_python_google-cloud-pubsub" path="external/python/google-cloud-pubsub" />
-  <project name="android_external_python_google-gax" path="external/python/google-gax" />
-  <project name="android_external_python_googleapis" path="external/python/googleapis" />
-  <project name="android_external_python_grpc-google-iam-v1" path="external/python/grpc-google-iam-v1" />
-  <project name="android_external_python_grpcio" path="external/python/grpcio" />
-  <project name="android_external_python_httplib2" path="external/python/httplib2" />
-  <project name="android_external_python_matplotlib" path="external/python/matplotlib" />
-  <project name="android_external_python_numpy" path="external/python/numpy" />
-  <project name="android_external_python_oauth2client" path="external/python/oauth2client" />
-  <project name="android_external_python_olefile" path="external/python/olefile" />
-  <project name="android_external_python_packaging" path="external/python/packaging" />
-  <project name="android_external_python_parse" path="external/python/parse" />
-  <project name="android_external_python_ply" path="external/python/ply" />
-  <project name="android_external_python_proto-google-cloud-pubsub-v1" path="external/python/proto-google-cloud-pubsub-v1" />
-  <project name="android_external_python_protobuf" path="external/python/protobuf" />
-  <project name="android_external_python_pyasn1" path="external/python/pyasn1" />
-  <project name="android_external_python_pyasn1-modules" path="external/python/pyasn1-modules" />
-  <project name="android_external_python_pyparsing" path="external/python/pyparsing" />
-  <project name="android_external_python_requests" path="external/python/requests" />
-  <project name="android_external_python_rsa" path="external/python/rsa" />
-  <project name="android_external_python_scipy" path="external/python/scipy" />
-  <project name="android_external_python_setuptools" path="external/python/setuptools" />
-  <project name="android_external_python_six" path="external/python/six" />
-  <project name="android_external_python_uritemplates" path="external/python/uritemplates" />
-  <project name="android_external_rappor" path="external/rappor" />
-  <project name="android_external_replicaisland" path="external/replicaisland" />
-  <project name="android_external_rmi4utils" path="external/rmi4utils" />
-  <project name="android_external_robolectric" path="external/robolectric" />
-  <project name="android_external_robolectric-shadows" path="external/robolectric-shadows" />
-  <project name="android_external_roboto-fonts" path="external/roboto-fonts" />
-  <project name="android_external_rootdev" path="external/rootdev" />
-  <project name="android_external_safe-iop" path="external/safe-iop" />
-  <project name="android_external_scapy" path="external/scapy" />
-  <project name="android_external_scrypt" path="external/scrypt" />
-  <project name="android_external_seccomp-tests" path="external/seccomp-tests" />
-  <project name="android_external_selinux" path="external/selinux" />
-  <project name="android_external_sfntly" path="external/sfntly" />
-  <project name="android_external_shaderc_spirv-headers" path="external/shaderc/spirv-headers" />
-  <project name="android_external_shflags" path="external/shflags" />
-  <project name="android_external_skia" path="external/skia" />
-  <project name="android_external_skqp" path="external/skqp" />
-  <project name="android_external_sl4a" path="external/sl4a" />
-  <project name="android_external_slf4j" path="external/slf4j" />
-  <project name="android_external_smali" path="external/smali" />
-  <project name="android_external_snakeyaml" path="external/snakeyaml" />
-  <project name="android_external_sonic" path="external/sonic" />
-  <project name="android_external_sonivox" path="external/sonivox" />
-  <project name="android_external_speex" path="external/speex" />
-  <project name="android_external_spirv-llvm" path="external/spirv-llvm" />
-  <project name="android_external_sqlite" path="external/sqlite" />
-  <project name="android_external_squashfs-tools" path="external/squashfs-tools" />
-  <project name="android_external_strace" path="external/strace" />
-  <project name="android_external_stressapptest" path="external/stressapptest" />
-  <project name="android_external_subsampling-scale-image-view" path="external/subsampling-scale-image-view" />
-  <project name="android_external_swiftshader" path="external/swiftshader" />
-  <project name="android_external_syslinux" path="external/syslinux" />
-  <project name="android_external_tagsoup" path="external/tagsoup" />
-  <project name="android_external_tcpdump" path="external/tcpdump" />
-  <project name="android_external_tensorflow" path="external/tensorflow" />
-  <project name="android_external_testng" path="external/testng" />
-  <project name="android_external_timezonepicker-support" path="external/timezonepicker-support" />
-  <project name="android_external_tinyalsa" path="external/tinyalsa" />
-  <project name="android_external_tinycompress" path="external/tinycompress" />
-  <project name="android_external_tinyxml" path="external/tinyxml" />
-  <project name="android_external_tinyxml2" path="external/tinyxml2" />
-  <project name="android_external_toolchain-utils" path="external/toolchain-utils" />
-  <project name="android_external_toybox" path="external/toybox" />
-  <project name="android_external_tpm2" path="external/tpm2" />
-  <project name="android_external_trappy" path="external/trappy" />
-  <project name="android_external_tremolo" path="external/tremolo" />
-  <project name="android_external_turbine" path="external/turbine" />
-  <project name="android_external_unicode" path="external/unicode" />
-  <project name="android_external_universal-tween-engine" path="external/universal-tween-engine" />
-  <project name="android_external_v4l2_codec2" path="external/v4l2_codec2" />
-  <project name="android_external_v8" path="external/v8" />
-  <project name="android_external_valgrind" path="external/valgrind" />
-  <project name="android_external_vboot_reference" path="external/vboot_reference" />
-  <project name="android_external_vixl" path="external/vixl" />
-  <project name="android_external_vogar" path="external/vogar" />
-  <project name="android_external_volley" path="external/volley" />
-  <project name="android_external_vulkan-validation-layers" path="external/vulkan-validation-layers" />
-  <project name="android_external_walt" path="external/walt" />
-  <project name="android_external_wayland" path="external/wayland" />
-  <project name="android_external_wayland-protocols" path="external/wayland-protocols" />
-  <project name="android_external_webp" path="external/webp" />
-  <project name="android_external_webrtc" path="external/webrtc" />
-  <project name="android_external_webview_support_interfaces" path="external/webview_support_interfaces" />
-  <project name="android_external_wpa_supplicant_8" path="external/wpa_supplicant_8" />
-  <project name="android_external_wycheproof" path="external/wycheproof" />
-  <project name="android_external_x264" path="external/x264" />
-  <project name="android_external_xmlrpcpp" path="external/xmlrpcpp" />
-  <project name="android_external_xmp_toolkit" path="external/xmp_toolkit" />
-  <project name="android_external_xz-embedded" path="external/xz-embedded" />
-  <project name="android_external_zlib" path="external/zlib" />
-  <project name="android_external_zopfli" path="external/zopfli" />
-  <project name="android_external_zxing" path="external/zxing" />
-  <project name="android_frameworks_compile_libbcc" path="frameworks/compile/libbcc" />
-  <project name="android_frameworks_compile_mclinker" path="frameworks/compile/mclinker" />
-  <project name="android_frameworks_compile_slang" path="frameworks/compile/slang" />
-  <project name="android_frameworks_data-binding" path="frameworks/data-binding" />
-  <project name="android_frameworks_ex" path="frameworks/ex" />
-  <project name="android_frameworks_layoutlib" path="frameworks/layoutlib" />
-  <project name="android_frameworks_minikin" path="frameworks/minikin" />
-  <project name="android_frameworks_ml" path="frameworks/ml" />
-  <project name="android_frameworks_multidex" path="frameworks/multidex" />
-  <project name="android_frameworks_native" path="frameworks/native" />
-  <project name="android_frameworks_opt_bitmap" path="frameworks/opt/bitmap" />
-  <project name="android_frameworks_opt_calendar" path="frameworks/opt/calendar" />
-  <project name="android_frameworks_opt_car_services" path="frameworks/opt/car/services" />
-  <project name="android_frameworks_opt_car_setupwizard" path="frameworks/opt/car/setupwizard" />
-  <project name="android_frameworks_opt_chips" path="frameworks/opt/chips" />
-  <project name="android_frameworks_opt_colorpicker" path="frameworks/opt/colorpicker" />
-  <project name="android_frameworks_opt_datetimepicker" path="frameworks/opt/datetimepicker" />
-  <project name="android_frameworks_opt_inputconnectioncommon" path="frameworks/opt/inputconnectioncommon" />
-  <project name="android_frameworks_opt_inputmethodcommon" path="frameworks/opt/inputmethodcommon" />
-  <project name="android_frameworks_opt_net_ethernet" path="frameworks/opt/net/ethernet" />
-  <project name="android_frameworks_opt_net_ims" path="frameworks/opt/net/ims" />
-  <project name="android_frameworks_opt_net_lowpan" path="frameworks/opt/net/lowpan" />
-  <project name="android_frameworks_opt_net_voip" path="frameworks/opt/net/voip" />
-  <project name="android_frameworks_opt_net_wifi" path="frameworks/opt/net/wifi" />
-  <project name="android_frameworks_opt_photoviewer" path="frameworks/opt/photoviewer" />
-  <project name="android_frameworks_opt_setupwizard" path="frameworks/opt/setupwizard" />
-  <project name="android_frameworks_opt_telephony" path="frameworks/opt/telephony" />
-  <project name="android_frameworks_opt_timezonepicker" path="frameworks/opt/timezonepicker" />
-  <project name="android_frameworks_opt_vcard" path="frameworks/opt/vcard" />
-  <project name="android_frameworks_rs" path="frameworks/rs" />
-  <project name="android_frameworks_support" path="frameworks/support" />
-  <project name="android_frameworks_wilhelm" path="frameworks/wilhelm" />
-  <project name="android_hardware_akm" path="hardware/akm" />
-  <project name="android_hardware_amlogic_bootctrl" path="hardware/amlogic/bootctrl"  />
-  <project name="android_hardware_amlogic_consumerir" path="hardware/amlogic/consumerir"  />
-  <project name="android_hardware_amlogic_gatekeeper" path="hardware/amlogic/gatekeeper"  />
-  <project name="android_hardware_amlogic_gralloc" path="hardware/amlogic/gralloc"  />
-  <project name="android_hardware_amlogic_hdmi_cec" path="hardware/amlogic/hdmi_cec"  />
-  <project name="android_hardware_amlogic_keymaster" path="hardware/amlogic/keymaster"  />
-  <project name="android_hardware_amlogic_lights" path="hardware/amlogic/lights"  />
-  <project name="android_hardware_amlogic_media_modules" path="hardware/amlogic/media_modules"  />
-  <project name="android_hardware_amlogic_power" path="hardware/amlogic/power"  />
-  <project name="android_hardware_amlogic_screen_source" path="hardware/amlogic/screen_source"  />
-  <project name="android_hardware_amlogic_thermal" path="hardware/amlogic/thermal"  />
-  <project name="android_hardware_amlogic_tv_input" path="hardware/amlogic/tv_input"  />
-  <project name="android_vendor_amlogic_gpu" path="vendor/amlogic/common/gpu"  />
-  <project name="android_vendor_amlogic_gpu-lib" path="vendor/amlogic/common/gpu/lib" />
-  <project name="android_vendor_amlogic_arm_isp" path="vendor/amlogic/common/arm_isp"  />
-  <project name="android_hardware_broadcom_libbt" path="hardware/broadcom/libbt" />
-  <project name="android_hardware_broadcom_wlan" path="hardware/broadcom/wlan" />
 
-  <project name="android_hardware_libhardware" path="hardware/libhardware" />
-  <project name="android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" />
-  <project name="android_hardware_qcom_neuralnetworks_hvxservice" path="hardware/qcom/neuralnetworks/hvxservice" />
-  <project name="android_hardware_ril" path="hardware/ril" />
-  <project name="android_vendor_amlogic_npu" path="vendor/amlogic/common/npu"  />
-  <project name="android_hardware_wifi_broadcom_drivers_ap6xxx" path="hardware/wifi/broadcom/drivers/ap6xxx"  />
-  <project name="android_hardware_wifi_icomm_drivers_ssv6xxx" path="hardware/wifi/icomm/drivers/ssv6xxx"  />
-  <project name="android_hardware_wifi_mtk_drivers_mt7601" path="hardware/wifi/mtk/drivers/mt7601"  />
-  <project name="android_hardware_wifi_mtk_drivers_mt7668" path="hardware/wifi/mtk/drivers/mt7668"  />
-  <project name="android_hardware_wifi_qualcomm_drivers_qca6174" path="hardware/wifi/qualcomm/drivers/qca6174"  />
-  <project name="android_hardware_wifi_qualcomm_drivers_qca9377" path="hardware/wifi/qualcomm/drivers/qca9377"  />
-  <project name="android_hardware_wifi_realtek_drivers_8188eu" path="hardware/wifi/realtek/drivers/8188eu"  />
-  <project name="android_hardware_wifi_realtek_drivers_8188ftv" path="hardware/wifi/realtek/drivers/8188ftv"  />
-  <project name="android_hardware_wifi_realtek_drivers_8189es" path="hardware/wifi/realtek/drivers/8189es"  />
-  <project name="android_hardware_wifi_realtek_drivers_8189ftv" path="hardware/wifi/realtek/drivers/8189ftv"  />
-  <project name="android_hardware_wifi_realtek_drivers_8192cu" path="hardware/wifi/realtek/drivers/8192cu"  />
-  <project name="android_hardware_wifi_realtek_drivers_8192du" path="hardware/wifi/realtek/drivers/8192du"  />
-  <project name="android_hardware_wifi_realtek_drivers_8192es" path="hardware/wifi/realtek/drivers/8192es"  />
-  <project name="android_hardware_wifi_realtek_drivers_8192eu" path="hardware/wifi/realtek/drivers/8192eu"  />
-  <project name="android_hardware_wifi_realtek_drivers_8723au" path="hardware/wifi/realtek/drivers/8723au"  />
-  <project name="android_hardware_wifi_realtek_drivers_8723bs" path="hardware/wifi/realtek/drivers/8723bs"  />
-  <project name="android_hardware_wifi_realtek_drivers_8723bu" path="hardware/wifi/realtek/drivers/8723bu"  />
-  <project name="android_hardware_wifi_realtek_drivers_8723ds" path="hardware/wifi/realtek/drivers/8723ds"  />
-  <project name="android_hardware_wifi_realtek_drivers_8723du" path="hardware/wifi/realtek/drivers/8723du"  />
-  <project name="android_hardware_wifi_realtek_drivers_8811au" path="hardware/wifi/realtek/drivers/8811au"  />
-  <project name="android_hardware_wifi_realtek_drivers_8812au" path="hardware/wifi/realtek/drivers/8812au"  />
-  <project name="android_hardware_wifi_realtek_drivers_8822bs" path="hardware/wifi/realtek/drivers/8822bs"  />
-  <project name="android_hardware_wifi_realtek_drivers_8822bu" path="hardware/wifi/realtek/drivers/8822bu"  />
-  <project name="android_libcore" path="libcore" />
-  <project name="android_libnativehelper" path="libnativehelper" />
-  <project name="android_vendor_amlogic_apps_AppInstaller" path="vendor/amlogic/common/apps/AppInstaller"  />
-  <project name="android_vendor_amlogic_apps_DLNA" path="vendor/amlogic/common/apps/DLNA"  />
-  <project name="android_vendor_amlogic_apps_DroidLiveTv" path="vendor/amlogic/common/apps/DroidLiveTv"  />
-  <project name="android_vendor_amlogic_apps_DroidTvSettings" path="vendor/amlogic/common/apps/DroidTvSettings"  />
-  <project name="android_vendor_amlogic_apps_FileBrowser" path="vendor/amlogic/common/apps/FileBrowser"  />
-  <project name="android_vendor_amlogic_apps_MboxLauncher2" path="vendor/amlogic/common/apps/MboxLauncher2"  />
-  <project name="android_vendor_amlogic_apps_NativeImagePlayer" path="vendor/amlogic/common/apps/NativeImagePlaye"  />
-  <project name="android_vendor_amlogic_apps_OTAUpgrade2" path="vendor/amlogic/common/apps/OTAUpgrade2"  />
-  <project name="android_vendor_amlogic_apps_PPPoE" path="vendor/amlogic/common/apps/PPPoE"  />
-  <project name="android_vendor_amlogic_apps_RemoteIME" path="vendor/amlogic/common/apps/RemoteIME"  />
-  <project name="android_vendor_amlogic_apps_TvInput" path="vendor/amlogic/common/apps/TvInput"  />
-  <project name="android_vendor_amlogic_apps_VideoPlayer" path="vendor/amlogic/common/apps/VideoPlayer"  />
-  <project name="android_packages_apps_BasicSmsReceiver" path="packages/apps/BasicSmsReceiver" />
-  <project name="android_packages_apps_Bluetooth" path="packages/apps/Bluetooth" />
-  <project name="android_packages_apps_Browser2" path="packages/apps/Browser2" />
-  <project name="android_packages_apps_Calendar" path="packages/apps/Calendar" />
-  <project name="android_packages_apps_Camera2" path="packages/apps/Camera2" />
-  <project name="android_packages_apps_Car_Dialer" path="packages/apps/Car/Dialer" />
-  <project name="android_packages_apps_Car_Hvac" path="packages/apps/Car/Hvac" />
-  <project name="android_packages_apps_Car_LatinIME" path="packages/apps/Car/LatinIME" />
-  <project name="android_packages_apps_Car_Launcher" path="packages/apps/Car/Launcher" />
-  <project name="android_packages_apps_Car_LensPicker" path="packages/apps/Car/LensPicker" />
-  <project name="android_packages_apps_Car_LocalMediaPlayer" path="packages/apps/Car/LocalMediaPlayer" />
-  <project name="android_packages_apps_Car_Media" path="packages/apps/Car/Media" />
-  <project name="android_packages_apps_Car_Messenger" path="packages/apps/Car/Messenger" />
-  <project name="android_packages_apps_Car_Overview" path="packages/apps/Car/Overview" />
-  <project name="android_packages_apps_Car_Radio" path="packages/apps/Car/Radio" />
-  <project name="android_packages_apps_Car_Settings" path="packages/apps/Car/Settings" />
-  <project name="android_packages_apps_Car_Stream" path="packages/apps/Car/Stream" />
-  <project name="android_packages_apps_Car_SystemUpdater" path="packages/apps/Car/SystemUpdater" />
-  <project name="android_packages_apps_Car_libs" path="packages/apps/Car/libs" />
-  <project name="android_packages_apps_CarrierConfig" path="packages/apps/CarrierConfig" />
-  <project name="android_packages_apps_CellBroadcastReceiver" path="packages/apps/CellBroadcastReceiver" />
-  <project name="android_packages_apps_CertInstaller" path="packages/apps/CertInstaller" />
-  <project name="android_packages_apps_Contacts" path="packages/apps/Contacts" />
-  <project name="android_packages_apps_DeskClock" path="packages/apps/DeskClock" />
-  <project name="android_packages_apps_DevCamera" path="packages/apps/DevCamera" />
-  <project name="android_packages_apps_Dialer" path="packages/apps/Dialer" />
-  <project name="android_packages_apps_DocumentsUI" path="packages/apps/DocumentsUI" />
-  <project name="android_packages_apps_Email" path="packages/apps/Email" />
-  <project name="android_packages_apps_EmergencyInfo" path="packages/apps/EmergencyInfo" />
-  <project name="android_packages_apps_ExactCalculator" path="packages/apps/ExactCalculator" />
-  <project name="android_packages_apps_Gallery" path="packages/apps/Gallery" />
-  <project name="android_packages_apps_Gallery2" path="packages/apps/Gallery2" />
-  <project name="android_packages_apps_HTMLViewer" path="packages/apps/HTMLViewer" />
-  <project name="android_packages_apps_KeyChain" path="packages/apps/KeyChain" />
-  <project name="android_packages_apps_Launcher2" path="packages/apps/Launcher2" />
-  <project name="android_packages_apps_Launcher3" path="packages/apps/Launcher3" />
-  <project name="android_packages_apps_LegacyCamera" path="packages/apps/LegacyCamera" />
-  <project name="android_packages_apps_ManagedProvisioning" path="packages/apps/ManagedProvisioning" />
-  <project name="android_packages_apps_Messaging" path="packages/apps/Messaging" />
-  <project name="android_packages_apps_Music" path="packages/apps/Music" />
-  <project name="android_packages_apps_MusicFX" path="packages/apps/MusicFX" />
-  <project name="android_packages_apps_Nfc" path="packages/apps/Nfc" />
-  <project name="android_packages_apps_OneTimeInitializer" path="packages/apps/OneTimeInitializer" />
-  <project name="android_packages_apps_PackageInstaller" path="packages/apps/PackageInstaller" />
-  <project name="android_packages_apps_PhoneCommon" path="packages/apps/PhoneCommon" />
-  <project name="android_packages_apps_Protips" path="packages/apps/Protips" />
-  <project name="android_packages_apps_Provision" path="packages/apps/Provision" />
-  <project name="android_packages_apps_QuickSearchBox" path="packages/apps/QuickSearchBox" />
-  <project name="android_packages_apps_SafetyRegulatoryInfo" path="packages/apps/SafetyRegulatoryInfo" />
-  <project name="android_packages_apps_SecureElement" path="packages/apps/SecureElement" />
-  <project name="android_packages_apps_Settings" path="packages/apps/Settings" />
-  <project name="android_packages_apps_SettingsIntelligence" path="packages/apps/SettingsIntelligence" />
-  <project name="android_packages_apps_SoundRecorder" path="packages/apps/SoundRecorder" />
-  <project name="android_packages_apps_SpareParts" path="packages/apps/SpareParts" />
-  <project name="android_packages_apps_Stk" path="packages/apps/Stk" />
-  <project name="android_packages_apps_StorageManager" path="packages/apps/StorageManager" />
-  <project name="android_packages_apps_TV" path="packages/apps/TV"  />
-  <project name="android_packages_apps_Tag" path="packages/apps/Tag" />
-  <project name="android_packages_apps_Terminal" path="packages/apps/Terminal" />
-  <project name="android_packages_apps_Test_connectivity" path="packages/apps/Test/connectivity" />
-  <project name="android_packages_apps_TimeZoneData" path="packages/apps/TimeZoneData" />
-  <project name="android_packages_apps_TimeZoneUpdater" path="packages/apps/TimeZoneUpdater" />
-  <project name="android_packages_apps_Traceur" path="packages/apps/Traceur" />
-  <project name="android_packages_apps_TvSettings" path="packages/apps/TvSettings" />
-  <project name="android_packages_apps_UnifiedEmail" path="packages/apps/UnifiedEmail" />
-  <project name="android_packages_apps_WallpaperPicker" path="packages/apps/WallpaperPicker" />
-  <project name="android_packages_experimental" path="packages/experimental" />
-  <project name="android_packages_inputmethods_LatinIME" path="packages/inputmethods/LatinIME" />
-  <project name="android_packages_inputmethods_OpenWnn" path="packages/inputmethods/OpenWnn" />
-  <project name="android_packages_providers_ApplicationsProvider" path="packages/providers/ApplicationsProvider" />
-  <project name="android_packages_providers_BlockedNumberProvider" path="packages/providers/BlockedNumberProvider" />
-  <project name="android_packages_providers_BookmarkProvider" path="packages/providers/BookmarkProvider" />
-  <project name="android_packages_providers_CalendarProvider" path="packages/providers/CalendarProvider" />
-  <project name="android_packages_providers_CallLogProvider" path="packages/providers/CallLogProvider" />
-  <project name="android_packages_providers_ContactsProvider" path="packages/providers/ContactsProvider" />
-  <project name="android_packages_providers_DownloadProvider" path="packages/providers/DownloadProvider" />
-  <project name="android_packages_providers_MediaProvider" path="packages/providers/MediaProvider" />
-  <project name="android_packages_providers_PartnerBookmarksProvider" path="packages/providers/PartnerBookmarksProvider" />
-  <project name="android_packages_providers_TelephonyProvider" path="packages/providers/TelephonyProvider" />
-  <project name="android_packages_providers_TvProvider" path="packages/providers/TvProvider" />
-  <project name="android_packages_providers_UserDictionaryProvider" path="packages/providers/UserDictionaryProvider" />
-  <project name="android_packages_screensavers_Basic" path="packages/screensavers/Basic" />
-  <project name="android_packages_screensavers_PhotoTable" path="packages/screensavers/PhotoTable" />
-  <project name="android_packages_screensavers_WebView" path="packages/screensavers/WebView" />
-  <project name="android_packages_services_BuiltInPrintService" path="packages/services/BuiltInPrintService" />
-  <project name="android_packages_services_Car" path="packages/services/Car" />
-  <project name="android_packages_services_Mms" path="packages/services/Mms" />
-  <project name="android_packages_services_NetworkRecommendation" path="packages/services/NetworkRecommendation" />
-  <project name="android_packages_services_Telecomm" path="packages/services/Telecomm" />
-  <project name="android_packages_services_Telephony" path="packages/services/Telephony" />
-  <project name="android_packages_wallpapers_LivePicker" path="packages/wallpapers/LivePicker" />
-  <project name="android_pdk" path="pdk" />
-  <project name="android_platform_testing" path="platform_testing" />
-  <project name="android_prebuilts_abi-dumps_ndk" path="prebuilts/abi-dumps/ndk" />
-  <project name="android_prebuilts_build-tools" path="prebuilts/build-tools" />
-  <project name="android_prebuilts_checkcolor" path="prebuilts/checkcolor" />
-  <project name="android_prebuilts_checkstyle" path="prebuilts/checkstyle" />
-  <project name="android_prebuilts_clang-tools" path="prebuilts/clang-tools" />
-  <project name="android_prebuilts_clang_host_darwin-x86" path="prebuilts/clang/host/darwin-x86" />
-  <project name="platform/prebuilts/clang/host/linux-x86" remote="aosp" path="prebuilts/clang/host/linux-x86" revision="c9cc9e7d29b8970d8ddb734c88fb62d01e0b7279" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_prebuilts_deqp" path="prebuilts/deqp" />
-  <project name="android_prebuilts_devtools" path="prebuilts/devtools" />
-  <project name="android_prebuilts_gcc_darwin-x86_aarch64_aarch64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" />
-  <project name="android_prebuilts_gcc_darwin-x86_arm_arm-linux-androideabi-4.9" path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" />
-  <project name="android_prebuilts_gcc_darwin-x86_host_i686-apple-darwin-4.2.1" path="prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" />
-  <project name="android_prebuilts_gcc_darwin-x86_mips_mips64el-linux-android-4.9" path="prebuilts/gcc/darwin-x86/mips/mips64el-linux-android-4.9" />
-  <project name="android_prebuilts_gcc_darwin-x86_x86_x86_64-linux-android-4.9" path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.9" />
-  <project name="android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9" path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" />
-  <project name="android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" />
-  <project name="android_prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.15-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" />
-  <project name="android_prebuilts_gcc_linux-x86_host_x86_64-w64-mingw32-4.8" path="prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" />
-  <project name="android_prebuilts_gcc_linux-x86_mips_mips64el-linux-android-4.9" path="prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" />
-  <project name="android_prebuilts_gcc_linux-x86_x86_x86_64-linux-android-4.9" path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" />
-  <project name="android_prebuilts_gdb_darwin-x86" path="prebuilts/gdb/darwin-x86" />
-  <project name="android_prebuilts_gdb_linux-x86" path="prebuilts/gdb/linux-x86" />
-  <project name="android_prebuilts_go_darwin-x86" path="prebuilts/go/darwin-x86" />
-  <project name="android_prebuilts_go_linux-x86" path="prebuilts/go/linux-x86" />
-  <project name="android_prebuilts_gradle-plugin" path="prebuilts/gradle-plugin" />
-  <project name="platform/prebuilts/jdk/jdk8" remote="aosp" path="prebuilts/jdk/jdk8" revision="a782115c262f0bc08ed2b8ffcd7d85c72c894ad2" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="platform/prebuilts/jdk/jdk9" remote="aosp"  path="prebuilts/jdk/jdk9" revision="d8a16f7152833caeb7b36fb8e045d861d2d77465" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_prebuilts_ktlint" path="prebuilts/ktlint" />
-  <project name="android_prebuilts_libs_libedit" path="prebuilts/libs/libedit" />
-  <project name="android_prebuilts_maven_repo_android" path="prebuilts/maven_repo/android" />
-  <project name="android_prebuilts_maven_repo_bumptech" path="prebuilts/maven_repo/bumptech" />
-  <project name="platform/prebuilts/maven_repo/google-play-service-client-libraries-3p" remote="aosp" path="prebuilts/maven_repo/google-play-service-client-libraries-3p" revision="427e6e2267fd43142ddbd1a87268e0112ddb9b11" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="platform/prebuilts/misc" remote="aosp" path="prebuilts/misc" revision="15560bb32cdb9b47db48eb4865b736df9708a8fe" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_prebuilts_ndk" path="prebuilts/ndk" />
-  <project name="android_prebuilts_python_darwin-x86_2.7.5" path="prebuilts/python/darwin-x86/2.7.5" />
-  <project name="android_prebuilts_python_linux-x86_2.7.5" path="prebuilts/python/linux-x86/2.7.5" />
-  <project name="platform/prebuilts/qemu-kernel" remote="aosp" path="prebuilts/qemu-kernel" revision="1d9efb9a9ead79e3529dd9fe0cae5158156a66fe" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_prebuilts_r8" path="prebuilts/r8" />
-  <project name="platform/prebuilts/sdk" remote="aosp" path="prebuilts/sdk" revision="57500d2bc3a1d065ee3f5789628d839a4b9fa544" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="platform/prebuilts/tools" remote="aosp" path="prebuilts/tools" revision="b9b8ab7896ef1ae694551dda56fb4f9c0e62aee7" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_prebuilts_vndk_v27" path="prebuilts/vndk/v27" />
-  <project name="android_sdk" path="sdk" />
-  <project name="android_system_ca-certificates" path="system/ca-certificates" />
-  <project name="android_system_chre" path="system/chre" />
-  <project name="android_system_connectivity_wificond" path="system/connectivity/wificond" />
-  <project name="android_system_connectivity_wifilogd" path="system/connectivity/wifilogd" />
-  <project name="android_system_core" path="system/core" />
-  <project name="android_system_extras" path="system/extras" />
-  <project name="android_system_gatekeeper" path="system/gatekeeper" />
-  <project name="android_system_hardware_interfaces" path="system/hardware/interfaces" />
-  <project name="android_system_hwservicemanager" path="system/hwservicemanager" />
-  <project name="android_system_iot_attestation" path="system/iot/attestation" />
-  <project name="android_system_keymaster" path="system/keymaster" />
-  <project name="android_system_libfmq" path="system/libfmq" />
-  <project name="android_system_libhidl" path="system/libhidl" />
-  <project name="android_system_libhwbinder" path="system/libhwbinder" />
-  <project name="android_system_libufdt" path="system/libufdt" />
-  <project name="android_system_libvintf" path="system/libvintf" />
-  <project name="android_system_media" path="system/media" />
-  <project name="android_system_netd" path="system/netd" />
-  <project name="android_system_nfc" path="system/nfc" />
-  <project name="android_system_nvram" path="system/nvram" />
-  <project name="android_system_security" path="system/security" />
-  <project name="android_system_sepolicy" path="system/sepolicy" />
-  <project name="android_system_timezone" path="system/timezone" />
-  <project name="android_system_tools_aidl" path="system/tools/aidl" />
-  <project name="android_system_tools_hidl" path="system/tools/hidl" />
-  <project name="android_system_tpm" path="system/tpm" />
-  <project name="android_system_update_engine" path="system/update_engine" />
-  <project name="android_system_vold" path="system/vold" />
-  <project name="android_test_framework" path="test/framework" />
-  <project name="android_test_suite_harness" path="test/suite_harness" />
-  <project name="android_test_vti_alert" path="test/vti/alert" />
-  <project name="android_test_vti_dashboard" path="test/vti/dashboard" />
-  <project name="android_test_vti_fuzz_test_serving" path="test/vti/fuzz_test_serving" />
-  <project name="android_test_vti_test_serving" path="test/vti/test_serving" />
-  <project name="android_test_vts" path="test/vts" />
-  <project name="android_test_vts-testcase_fuzz" path="test/vts-testcase/fuzz" />
-  <project name="android_test_vts-testcase_hal" path="test/vts-testcase/hal" />
-  <project name="android_test_vts-testcase_hal-trace" path="test/vts-testcase/hal-trace" />
-  <project name="android_test_vts-testcase_kernel" path="test/vts-testcase/kernel" />
-  <project name="android_test_vts-testcase_nbu" path="test/vts-testcase/nbu" />
-  <project name="android_test_vts-testcase_performance" path="test/vts-testcase/performance" />
-  <project name="android_test_vts-testcase_security" path="test/vts-testcase/security" />
-  <project name="android_test_vts-testcase_vndk" path="test/vts-testcase/vndk" />
-  <project name="android_tools_acloud" path="tools/acloud" />
-  <project name="android_tools_apksig" path="tools/apksig" />
-  <project name="android_tools_apkzlib" path="tools/apkzlib" />
-  <project name="android_tools_appbundle" path="tools/appbundle" />
-  <project name="platform/tools/dexter" remote="aosp" path="tools/dexter" revision="cd7c951686b508e7b6cd430c0c2539425b5336d8" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_tools_external_fat32lib" path="tools/external/fat32lib" />
-  <project name="platform/tools/external/gradle" remote="aosp" path="tools/external/gradle" revision="043279cc0bfd0e50b28e3f647beb53f38a6cf246" upstream="refs/tags/android-9.0.0_r3" />
-  <project name="android_tools_loganalysis" path="tools/loganalysis" />
-  <project name="android_tools_metalava" path="tools/metalava" />
-  <project name="android_tools_repohooks" path="tools/repohooks" />
-  <project name="android_tools_test_connectivity" path="tools/test/connectivity" />
-  <project name="android_tools_tradefederation_core" path="tools/tradefederation/core" />
-  <project name="android_tools_tradefederation_contrib" path="tools/tradefederation/contrib" />
-  <project name="android_vendor_amlogic_darwin" path="vendor/amlogic/darwin"  />
-  <project name="android_toolchain_benchmark" path="toolchain/benchmark" />
-  <project name="android_toolchain_binutils" path="toolchain/binutils" />
-  <project name="android_toolchain_pgo-profiles" path="toolchain/pgo-profiles" />
-  <project name="u-boot" path="bootloader/uboot" revision="4752efbb90b7d048a81760c67f8c826f14baf41c" />
-  <project name="android_vendor_amlogic_apps_VendorOverlay" path="vendor/amlogic/common/apps/VendorOverlay"  />
-  <project name="android_vendor_amlogic_external_exfat" path="vendor/amlogic/common/external/exfat"  />
-  <project name="android_vendor_amlogic_external_icu" path="vendor/amlogic/common/external/icu"  />
-  <project name="android_vendor_amlogic_external_recovery" path="vendor/amlogic/common/external/recovery"  />
-  <project name="android_vendor_amlogic_frameworks_pppoe" path="vendor/amlogic/common/frameworks/pppoe"  />
-  <project name="android_vendor_amlogic_interfaces" path="vendor/amlogic/common/interfaces"  />
-  <project name="android_vendor_amlogic_hdcp" path="vendor/amlogic/common/hdcp"  />
-  <project name="android_vendor_amlogic_LibTsPlayer" path="vendor/amlogic/common/LibTsPlayer"  />
-  <project name="android_vendor_amlogic_prebuilt" path="vendor/amlogic/common/prebuilt"  />
-  <project name="android_vendor_amlogic_prebuilt_libmediadrm" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
-  <project name="android_vendor_amlogic_prebuilt_libstagefrighthw" path="vendor/amlogic/common/prebuilt/libstagefrighthw"  />
-  <project name="android_vendor_amlogic_provision" path="vendor/amlogic/common/provision"  />
-  <project name="android_vendor_amlogic_scripts" path="vendor/amlogic/common/scripts"  />
-  <project name="android_vendor_amlogic_system" path="vendor/amlogic/common/system"  />
-  <project name="android_vendor_amlogic_system_droidvold" path="vendor/amlogic/common/system/droidvold"  />
-  <project name="android_vendor_amlogic_tdk_linuxdriver" path="vendor/amlogic/common/tdk/linuxdriver"  />
-  <project name="android_vendor_amlogic_tools" path="vendor/amlogic/common/tools"  />
-  <project name="android_vendor_amlogic_tools_auto_patch" path="vendor/amlogic/common/tools/auto_patch"  />
-  <project name="android_vendor_amlogic_tv_frameworks" path="vendor/amlogic/common/tv/frameworks"  />
-  <project name="android_vendor_amlogic_tv_tvserver" path="vendor/amlogic/common/tv/tvserver"  />
-  <project name="android_vendor_amlogic_broadcom_btusb" path="vendor/amlogic/common/broadcom/btusb"  />
-  <project name="android_vendor_widevine" path="vendor/widevine"  />
+  <project name="android_bootable_recovery" remote="khadas" path="bootable/recovery" />
+  <project name="android_device_khadas" remote="khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
+  <project name="android_external_e2fsprogs" remote="khadas" path="external/e2fsprogs" />
+  <project name="android_external_i2c-tools" remote="khadas" path="external/i2c-tools" />
+  <project name="android_external_libvpx" remote="khadas" path="external/libvpx" />
+  <project name="android_external_libyuv" remote="khadas" path="external/libyuv" />
+  <project name="android_external_sqlite" remote="khadas" path="external/sqlite" />
+  <project name="android_external_tinyalsa" remote="khadas" path="external/tinyalsa" />
+  <project name="android_external_wpa_supplicant_8" remote="khadas" path="external/wpa_supplicant_8"/>
+  <project name="android_frameworks_hardware_interfaces" remote="khadas" path="frameworks/hardware/interfaces" />
+  <project name="android_frameworks_native" remote="khadas" path="frameworks/native" />
+  <project name="android_frameworks_opt_net_ethernet" remote="khadas" path="frameworks/opt/net/ethernet" />
+  <project name="android_frameworks_opt_net_wifi" remote="khadas" path="frameworks/opt/net/wifi" />
+  <project name="android_hardware_akm" remote="khadas" path="hardware/akm" />
+  <project name="android_hardware_amlogic_bootctrl" remote="khadas" path="hardware/amlogic/bootctrl"  />
+  <project name="android_hardware_amlogic_consumerir" remote="khadas" path="hardware/amlogic/consumerir"  />
+  <project name="android_hardware_amlogic_gatekeeper" remote="khadas" path="hardware/amlogic/gatekeeper"  />
+  <project name="android_hardware_amlogic_gralloc" remote="khadas" path="hardware/amlogic/gralloc"  />
+  <project name="android_hardware_amlogic_hdmi_cec" remote="khadas" path="hardware/amlogic/hdmi_cec"  />
+  <project name="android_hardware_amlogic_keymaster" remote="khadas" path="hardware/amlogic/keymaster"  />
+  <project name="android_hardware_amlogic_lights" remote="khadas" path="hardware/amlogic/lights"  />
+  <project name="android_hardware_amlogic_media_modules" remote="khadas" path="hardware/amlogic/media_modules"  />
+  <project name="android_hardware_amlogic_power" remote="khadas" path="hardware/amlogic/power"  />
+  <project name="android_hardware_amlogic_screen_source" remote="khadas" path="hardware/amlogic/screen_source"  />
+  <project name="android_hardware_amlogic_thermal" remote="khadas" path="hardware/amlogic/thermal"  />
+  <project name="android_hardware_amlogic_tv_input" remote="khadas" path="hardware/amlogic/tv_input"  />
+  <project name="android_hardware_broadcom_libbt" remote="khadas" path="hardware/broadcom/libbt" />
+  <project name="android_hardware_libhardware_legacy" remote="khadas" path="hardware/libhardware_legacy" />
+  <project name="android_hardware_libhardware" remote="khadas" path="hardware/libhardware" />
+  <project name="android_hardware_qcom_neuralnetworks_hvxservice" remote="khadas" path="hardware/qcom/neuralnetworks/hvxservice" />
+  <project name="android_hardware_wifi_broadcom_drivers_ap6xxx" remote="khadas" path="hardware/wifi/broadcom/drivers/ap6xxx"  />
+  <project name="android_hardware_wifi_icomm_drivers_ssv6xxx" remote="khadas" path="hardware/wifi/icomm/drivers/ssv6xxx"  />
+  <project name="android_hardware_wifi_mtk_drivers_mt7601" remote="khadas" path="hardware/wifi/mtk/drivers/mt7601"  />
+  <project name="android_hardware_wifi_mtk_drivers_mt7668" remote="khadas" path="hardware/wifi/mtk/drivers/mt7668"  />
+  <project name="android_hardware_wifi_qualcomm_drivers_qca6174" remote="khadas" path="hardware/wifi/qualcomm/drivers/qca6174"  />
+  <project name="android_hardware_wifi_qualcomm_drivers_qca9377" remote="khadas" path="hardware/wifi/qualcomm/drivers/qca9377"  />
+  <project name="android_hardware_wifi_realtek_drivers_8188eu" remote="khadas" path="hardware/wifi/realtek/drivers/8188eu"  />
+  <project name="android_hardware_wifi_realtek_drivers_8188ftv" remote="khadas" path="hardware/wifi/realtek/drivers/8188ftv"  />
+  <project name="android_hardware_wifi_realtek_drivers_8189es" remote="khadas" path="hardware/wifi/realtek/drivers/8189es"  />
+  <project name="android_hardware_wifi_realtek_drivers_8189ftv" remote="khadas" path="hardware/wifi/realtek/drivers/8189ftv"  />
+  <project name="android_hardware_wifi_realtek_drivers_8192cu" remote="khadas" path="hardware/wifi/realtek/drivers/8192cu"  />
+  <project name="android_hardware_wifi_realtek_drivers_8192du" remote="khadas" path="hardware/wifi/realtek/drivers/8192du"  />
+  <project name="android_hardware_wifi_realtek_drivers_8192es" remote="khadas" path="hardware/wifi/realtek/drivers/8192es"  />
+  <project name="android_hardware_wifi_realtek_drivers_8192eu" remote="khadas" path="hardware/wifi/realtek/drivers/8192eu"  />
+  <project name="android_hardware_wifi_realtek_drivers_8723au" remote="khadas" path="hardware/wifi/realtek/drivers/8723au"  />
+  <project name="android_hardware_wifi_realtek_drivers_8723bs" remote="khadas" path="hardware/wifi/realtek/drivers/8723bs"  />
+  <project name="android_hardware_wifi_realtek_drivers_8723bu" remote="khadas" path="hardware/wifi/realtek/drivers/8723bu"  />
+  <project name="android_hardware_wifi_realtek_drivers_8723ds" remote="khadas" path="hardware/wifi/realtek/drivers/8723ds"  />
+  <project name="android_hardware_wifi_realtek_drivers_8723du" remote="khadas" path="hardware/wifi/realtek/drivers/8723du"  />
+  <project name="android_hardware_wifi_realtek_drivers_8811au" remote="khadas" path="hardware/wifi/realtek/drivers/8811au"  />
+  <project name="android_hardware_wifi_realtek_drivers_8812au" remote="khadas" path="hardware/wifi/realtek/drivers/8812au"  />
+  <project name="android_hardware_wifi_realtek_drivers_8822bs" remote="khadas" path="hardware/wifi/realtek/drivers/8822bs"  />
+  <project name="android_hardware_wifi_realtek_drivers_8822bu" remote="khadas" path="hardware/wifi/realtek/drivers/8822bu"  />
+  <project name="android_packages_apps_Bluetooth" remote="khadas" path="packages/apps/Bluetooth" />
+  <project name="android_packages_apps_Camera2" remote="khadas" path="packages/apps/Camera2" />
+  <project name="android_packages_apps_DevCamera" remote="khadas" path="packages/apps/DevCamera" />
+  <project name="android_packages_apps_Dialer" remote="khadas" path="packages/apps/Dialer" />
+  <project name="android_packages_apps_Email" remote="khadas" path="packages/apps/Email" />
+  <project name="android_packages_apps_ExactCalculator" remote="khadas" path="packages/apps/ExactCalculator" />
+  <project name="android_packages_apps_Gallery" remote="khadas" path="packages/apps/Gallery" />
+  <project name="android_packages_apps_Launcher2" remote="khadas" path="packages/apps/Launcher2" />
+  <project name="android_packages_apps_Launcher3" remote="khadas" path="packages/apps/Launcher3" />
+  <project name="android_packages_apps_Messaging" remote="khadas" path="packages/apps/Messaging" />
+  <project name="android_packages_apps_QuickSearchBox" remote="khadas" path="packages/apps/QuickSearchBox" />
+  <project name="android_packages_apps_Settings" remote="khadas" path="packages/apps/Settings" />
+  <project name="android_packages_apps_Stk" remote="khadas" path="packages/apps/Stk" />
+  <project name="android_packages_apps_Traceur" remote="khadas" path="packages/apps/Traceur" />
+  <project name="android_packages_apps_TV" remote="khadas" path="packages/apps/TV"  />
+  <project name="android_packages_apps_TvSettings" remote="khadas" path="packages/apps/TvSettings" />
+  <project name="android_packages_apps_UnifiedEmail" remote="khadas" path="packages/apps/UnifiedEmail" />
+  <project name="android_packages_inputmethods_LatinIME" remote="khadas" path="packages/inputmethods/LatinIME" />
+  <project name="android_packages_inputmethods_OpenWnn" remote="khadas" path="packages/inputmethods/OpenWnn" />
+  <project name="android_system_core" remote="khadas" path="system/core" />
+  <project name="android_system_libhidl" remote="khadas" path="system/libhidl" />
+  <project name="android_system_media" remote="khadas" path="system/media" />
+  <project name="android_system_sepolicy" remote="khadas" path="system/sepolicy" />
+  <project name="android_system_vold" remote="khadas" path="system/vold" />
+  <project name="android_vendor_amlogic_apps_AppInstaller" remote="khadas" path="vendor/amlogic/common/apps/AppInstaller"  />
+  <project name="android_vendor_amlogic_apps_DLNA" remote="khadas" path="vendor/amlogic/common/apps/DLNA"  />
+  <project name="android_vendor_amlogic_apps_DroidLiveTv" remote="khadas" path="vendor/amlogic/common/apps/DroidLiveTv"  />
+  <project name="android_vendor_amlogic_apps_DroidTvSettings" remote="khadas" path="vendor/amlogic/common/apps/DroidTvSettings"  />
+  <project name="android_vendor_amlogic_apps_FileBrowser" remote="khadas" path="vendor/amlogic/common/apps/FileBrowser"  />
+  <project name="android_vendor_amlogic_apps_IrBlaster" remote="khadas" path="vendor/amlogic/common/apps/IrBlaster"  />
+  <project name="android_vendor_amlogic_apps_MboxLauncher2" remote="khadas" path="vendor/amlogic/common/apps/MboxLauncher2"  />
+  <project name="android_vendor_amlogic_apps_NativeImagePlayer" remote="khadas" path="vendor/amlogic/common/apps/NativeImagePlaye"  />
+  <project name="android_vendor_amlogic_apps_OTAUpgrade2" remote="khadas" path="vendor/amlogic/common/apps/OTAUpgrade2"  />
+  <project name="android_vendor_amlogic_apps_PPPoE" remote="khadas" path="vendor/amlogic/common/apps/PPPoE"  />
+  <project name="android_vendor_amlogic_apps_RemoteIME" remote="khadas" path="vendor/amlogic/common/apps/RemoteIME"  />
+  <project name="android_vendor_amlogic_apps_TvInput" remote="khadas" path="vendor/amlogic/common/apps/TvInput"  />
+  <project name="android_vendor_amlogic_apps_VendorOverlay" remote="khadas" path="vendor/amlogic/common/apps/VendorOverlay"  />
+  <project name="android_vendor_amlogic_apps_VideoPlayer" remote="khadas" path="vendor/amlogic/common/apps/VideoPlayer"  />
+  <project name="android_vendor_amlogic_arm_isp" remote="khadas" path="vendor/amlogic/common/arm_isp"  />
+  <project name="android_vendor_amlogic_broadcom_btusb" remote="khadas" path="vendor/amlogic/common/broadcom/btusb"  />
+  <project name="android_vendor_amlogic_external_busybox" remote="khadas" path="vendor/amlogic/common/external/busybox"   />
+  <project name="android_vendor_amlogic_external_exfat" remote="khadas" path="vendor/amlogic/common/external/exfat"  />
+  <project name="android_vendor_amlogic_external_icu" remote="khadas" path="vendor/amlogic/common/external/icu"  />
+  <project name="android_vendor_amlogic_external_libaudioeffect" remote="khadas" path="vendor/amlogic/common/external/libaudioeffect"  />
+  <project name="android_vendor_amlogic_external_libzvbi" remote="khadas" path="vendor/amlogic/common/external/libzvbi"  />
+  <project name="android_vendor_amlogic_external_ntfs-3g" remote="khadas" path="vendor/amlogic/common/external/ntfs-3g"  />
+  <project name="android_vendor_amlogic_external_pppoe" remote="khadas" path="vendor/amlogic/common/external/pppoe"  />
+  <project name="android_vendor_amlogic_external_recovery" remote="khadas" path="vendor/amlogic/common/external/recovery"  />
+  <project name="android_vendor_amlogic_frameworks_pppoe" remote="khadas" path="vendor/amlogic/common/frameworks/pppoe"  />
+  <project name="android_vendor_amlogic_gpu-lib" remote="khadas" path="vendor/amlogic/common/gpu/lib" />
+  <project name="android_vendor_amlogic_gpu" remote="khadas" path="vendor/amlogic/common/gpu"  />
+  <project name="android_vendor_amlogic_hdcp" remote="khadas" path="vendor/amlogic/common/hdcp"  />
+  <project name="android_vendor_amlogic_interfaces" remote="khadas" path="vendor/amlogic/common/interfaces"  />
+  <project name="android_vendor_amlogic_ir_tools" remote="khadas" path="vendor/amlogic/common/ir_tools"  />
+  <project name="android_vendor_amlogic_LibTsPlayer" remote="khadas" path="vendor/amlogic/common/LibTsPlayer"  />
+  <project name="android_vendor_amlogic_npu" remote="khadas" path="vendor/amlogic/common/npu"  />
+  <project name="android_vendor_amlogic_prebuilt_libmediadrm" remote="khadas" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
+  <project name="android_vendor_amlogic_prebuilt_libstagefrighthw" remote="khadas" path="vendor/amlogic/common/prebuilt/libstagefrighthw"  />
+  <project name="android_vendor_amlogic_prebuilt" remote="khadas" path="vendor/amlogic/common/prebuilt"  />
+  <project name="android_vendor_amlogic_provision" remote="khadas" path="vendor/amlogic/common/provision"  />
+  <project name="android_vendor_amlogic_scripts" remote="khadas" path="vendor/amlogic/common/scripts"  />
+  <project name="android_vendor_amlogic_system_droidvold" remote="khadas" path="vendor/amlogic/common/system/droidvold"  />
+  <project name="android_vendor_amlogic_system" remote="khadas" path="vendor/amlogic/common/system"  />
+  <project name="android_vendor_amlogic_tdk_linuxdriver" remote="khadas" path="vendor/amlogic/common/tdk/linuxdriver"  />
+  <project name="android_vendor_amlogic_tools_auto_patch" remote="khadas" path="vendor/amlogic/common/tools/auto_patch"  />
+  <project name="android_vendor_amlogic_tools" remote="khadas" path="vendor/amlogic/common/tools"  />
+  <project name="android_vendor_amlogic_tv_frameworks" remote="khadas" path="vendor/amlogic/common/tv/frameworks"  />
+  <project name="android_vendor_amlogic_tv_tvserver" remote="khadas" path="vendor/amlogic/common/tv/tvserver"  />
+  <project name="android_vendor_widevine" remote="khadas" path="vendor/widevine"  />
+  <project name="linux" remote="khadas" path="common"  />
+  <project name="u-boot" remote="khadas" path="bootloader/uboot" revision="4752efbb90b7d048a81760c67f8c826f14baf41c" />
+
+  
+    <!-- Unchanged AOSP projects -->
+  <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" />
+  <project path="art" name="platform/art" groups="pdk" />
+  <project path="bionic" name="platform/bionic" groups="pdk" />
+  <project path="compatibility/cdd" name="platform/compatibility/cdd" groups="pdk" />
+  <project path="cts" name="platform/cts" groups="cts,pdk-cw-fs,pdk-fs" />
+  <project path="dalvik" name="platform/dalvik" groups="pdk-cw-fs,pdk-fs" />
+  <project path="developers/build" name="platform/developers/build" groups="developers" />
+  <project path="developers/demos" name="platform/developers/demos" groups="developers" />
+  <project path="developers/samples/android" name="platform/developers/samples/android" groups="developers" />
+  <project path="development" name="platform/development" groups="developers,pdk-cw-fs,pdk-fs" />
+  <project path="external/aac" name="platform/external/aac" groups="pdk" />
+  <project path="external/abi-compliance-checker" name="platform/external/abi-compliance-checker" groups="pdk" />
+  <project path="external/abi-dumper" name="platform/external/abi-dumper" groups="pdk" />
+  <project path="external/adhd" name="platform/external/adhd" groups="pdk" />
+  
+  <project path="external/android-clat" name="platform/external/android-clat" groups="pdk" />
+  <project path="external/androidplot" name="platform/external/androidplot" groups="pdk" />
+  <project path="external/annotation-tools" name="platform/external/annotation-tools" groups="pdk" />
+  <project path="external/ant-glob" name="platform/external/ant-glob" groups="pdk" />
+  <project path="external/antlr" name="platform/external/antlr" groups="pdk" />
+  <project path="external/apache-commons-math" name="platform/external/apache-commons-math" groups="pdk" />
+  <project path="external/apache-harmony" name="platform/external/apache-harmony" groups="pdk" />
+  <project path="external/apache-http" name="platform/external/apache-http" groups="pdk" />
+  <project path="external/apache-xml" name="platform/external/apache-xml" groups="pdk" />
+  <project path="external/archive-patcher" name="platform/external/archive-patcher" groups="pdk" />
+  <project path="external/arm-neon-tests" name="platform/external/arm-neon-tests" groups="vendor" />
+  <project path="external/autotest" name="platform/external/autotest" groups="pdk-fs" />
+  <project path="external/avb" name="platform/external/avb" groups="pdk" />
+  <project path="external/bart" name="platform/external/bart" groups="pdk" />
+  <project path="external/blktrace" name="platform/external/blktrace" groups="pdk" />
+  <project path="external/boringssl" name="platform/external/boringssl" groups="pdk" />
+  <project path="external/bouncycastle" name="platform/external/bouncycastle" groups="pdk" />
+  <project path="external/brotli" name="platform/external/brotli" groups="pdk" />
+  <project path="external/bsdiff" name="platform/external/bsdiff" groups="pdk" />
+  <project path="external/bzip2" name="platform/external/bzip2" groups="pdk" />
+  <project path="external/caliper" name="platform/external/caliper" groups="pdk" />
+  <project path="external/capstone" name="platform/external/capstone" groups="pdk" />
+  <project path="external/cblas" name="platform/external/cblas" groups="pdk" />
+  <project path="external/chromium-libpac" name="platform/external/chromium-libpac" groups="pdk" />
+  <project path="external/chromium-trace" name="platform/external/chromium-trace" groups="pdk" />
+  <project path="external/clang" name="platform/external/clang" groups="pdk" />
+  <project path="external/cmockery" name="platform/external/cmockery" groups="pdk" />
+  <project path="external/cn-cbor" name="platform/external/cn-cbor" groups="pdk" />
+  <project path="external/compiler-rt" name="platform/external/compiler-rt" groups="pdk" />
+  <project path="external/conscrypt" name="platform/external/conscrypt" groups="pdk" />
+  <project path="external/crcalc" name="platform/external/crcalc" groups="pdk" />
+  <project path="external/cros/system_api" name="platform/external/cros/system_api" groups="pdk" />
+  <project path="external/curl" name="platform/external/curl" groups="pdk" />
+  <project path="external/dagger2" name="platform/external/dagger2" groups="pdk" />
+  <project path="external/deqp" name="platform/external/deqp" groups="pdk-fs" />
+  <project path="external/desugar" name="platform/external/desugar" groups="pdk" />
+  <project path="external/devlib" name="platform/external/devlib" groups="pdk" />
+  <project path="external/dexmaker" name="platform/external/dexmaker" groups="pdk" />
+  <project path="external/dhcpcd-6.8.2" name="platform/external/dhcpcd-6.8.2" groups="pdk" />
+  <project path="external/dlmalloc" name="platform/external/dlmalloc" groups="pdk" />
+  <project path="external/dng_sdk" name="platform/external/dng_sdk" groups="pdk" />
+  <project path="external/dnsmasq" name="platform/external/dnsmasq" groups="pdk" />
+  <project path="external/doclava" name="platform/external/doclava" groups="pdk" />
+  <project path="external/drm_gralloc" name="platform/external/drm_gralloc" groups="pdk" />
+  <project path="external/drm_hwcomposer" name="platform/external/drm_hwcomposer" groups="drm_hwcomposer,pdk-fs" />
+  <project path="external/droiddriver" name="platform/external/droiddriver" groups="pdk" />
+  <project path="external/drrickorang" name="platform/external/drrickorang" groups="pdk" />
+  <project path="external/dtc" name="platform/external/dtc" groups="pdk"/>
+  <project path="external/easymock" name="platform/external/easymock" groups="pdk" />
+  <project path="external/eigen" name="platform/external/eigen" groups="pdk" />
+  <project path="external/elfutils" name="platform/external/elfutils" groups="pdk" />
+  <project path="external/emma" name="platform/external/emma" groups="pdk" />
+  <project path="external/error_prone" name="platform/external/error_prone" groups="pdk" />
+  <project path="external/esd" name="platform/external/esd" groups="pdk" />
+  <project path="external/expat" name="platform/external/expat" groups="pdk" />
+  <project path="external/eyes-free" name="platform/external/eyes-free" groups="pdk" />
+  <project path="external/f2fs-tools" name="platform/external/f2fs-tools" groups="pdk" />
+  <project path="external/fdlibm" name="platform/external/fdlibm" groups="pdk" />
+  <project path="external/fec" name="platform/external/fec" groups="pdk" />
+  <project path="external/fio" name="platform/external/fio" groups="pdk" />
+  <project path="external/flac" name="platform/external/flac" groups="pdk" />
+  <project path="external/flatbuffers" name="platform/external/flatbuffers" groups="pdk" />
+  <project path="external/fonttools" name="platform/external/fonttools" groups="pdk" />
+  <project path="external/freetype" name="platform/external/freetype" groups="pdk" />
+  <project path="external/fsck_msdos" name="platform/external/fsck_msdos" groups="pdk" />
+  <project path="external/gemmlowp" name="platform/external/gemmlowp" groups="pdk" />
+  <project path="external/gflags" name="platform/external/gflags" groups="pdk" />
+  <project path="external/giflib" name="platform/external/giflib" groups="pdk,qcom_msm8x26" />
+  <project path="external/glide" name="platform/external/glide" groups="pdk" />
+  <project path="external/golang-protobuf" name="platform/external/golang-protobuf" groups="pdk" />
+  <project path="external/google-api-services-storage" name="platform/external/google-api-services-storage" groups="pdk" />
+  <project path="external/google-benchmark" name="platform/external/google-benchmark" groups="pdk" />
+  <project path="external/google-breakpad" name="platform/external/google-breakpad" groups="pdk-fs" />
+  <project path="external/google-fonts/carrois-gothic-sc" name="platform/external/google-fonts/carrois-gothic-sc" groups="pdk" />
+  <project path="external/google-fonts/coming-soon" name="platform/external/google-fonts/coming-soon" groups="pdk" />
+  <project path="external/google-fonts/cutive-mono" name="platform/external/google-fonts/cutive-mono" groups="pdk" />
+  <project path="external/google-fonts/dancing-script" name="platform/external/google-fonts/dancing-script" groups="pdk" />
+  <project path="external/google-styleguide" name="platform/external/google-styleguide" groups="pdk" />
+  <project path="external/google-tv-pairing-protocol" name="platform/external/google-tv-pairing-protocol" groups="pdk" />
+  <project path="external/googletest" name="platform/external/googletest" groups="pdk" />
+  <project path="external/gptfdisk" name="platform/external/gptfdisk" groups="pdk" />
+  <project path="external/guava" name="platform/external/guava" groups="pdk" />
+  <project path="external/guice" name="platform/external/guice" groups="pdk" />
+  <project path="external/hamcrest" name="platform/external/hamcrest" groups="pdk" />
+  <project path="external/harfbuzz_ng" name="platform/external/harfbuzz_ng" groups="pdk,qcom_msm8x26" />
+  <project path="external/honggfuzz" name="platform/external/honggfuzz" groups="pdk" />
+  <project path="external/hyphenation-patterns" name="platform/external/hyphenation-patterns" groups="pdk" />
+  <project path="external/icu" name="platform/external/icu" groups="pdk" />
+  <project path="external/ImageMagick" name="platform/external/ImageMagick" groups="pdk" />
+  <project path="external/ims" name="platform/external/ims" groups="pdk" />
+  <project path="external/iproute2" name="platform/external/iproute2" groups="pdk" />
+  <project path="external/ipsec-tools" name="platform/external/ipsec-tools" groups="pdk" />
+  <project path="external/iptables" name="platform/external/iptables" groups="pdk" />
+  <project path="external/iputils" name="platform/external/iputils" groups="pdk" />
+  <project path="external/iw" name="platform/external/iw" groups="pdk" />
+  <project path="external/jacoco" name="platform/external/jacoco" groups="pdk" />
+  <project path="external/jarjar" name="platform/external/jarjar" groups="pdk" />
+  <project path="external/javaparser" name="platform/external/javaparser" groups="pdk" />
+  <project path="external/javasqlite" name="platform/external/javasqlite" groups="pdk" />
+  <project path="external/javassist" name="platform/external/javassist" groups="pdk" />
+  <project path="external/jcommander" name="platform/external/jcommander" groups="pdk" />
+  <project path="external/jdiff" name="platform/external/jdiff" groups="pdk" />
+  <project path="external/jemalloc" name="platform/external/jemalloc" groups="pdk" />
+  <project path="external/jline" name="platform/external/jline" groups="pdk,tradefed,pdk-fs" />
+  <project path="external/jmdns" name="platform/external/jmdns" groups="pdk" />
+  <project path="external/jsilver" name="platform/external/jsilver" groups="pdk" />
+  <project path="external/jsmn" name="platform/external/jsmn" groups="pdk" />
+  <project path="external/jsoncpp" name="platform/external/jsoncpp" groups="pdk" />
+  <project path="external/jsr305" name="platform/external/jsr305" groups="pdk" />
+  <project path="external/jsr330" name="platform/external/jsr330" groups="pdk" />
+  <project path="external/junit" name="platform/external/junit" groups="pdk" />
+  <project path="external/junit-params" name="platform/external/junit-params" groups="pdk" />
+  <project path="external/kernel-headers" name="platform/external/kernel-headers" groups="pdk" />
+  <project path="external/kmod" name="platform/external/kmod" groups="pdk" />
+  <project path="external/kotlinc" name="platform/external/kotlinc" groups="pdk" />
+  <project path="external/ksoap2" name="platform/external/ksoap2" groups="pdk" />
+  <project path="external/libavc" name="platform/external/libavc" groups="pdk" />
+  <project path="external/libbackup" name="platform/external/libbackup" groups="pdk" />
+  <project path="external/libbrillo" name="platform/external/libbrillo" groups="pdk" />
+  <project path="external/libcap" name="platform/external/libcap" groups="pdk" />
+  <project path="external/libcap-ng" name="platform/external/libcap-ng" groups="pdk" />
+  <project path="external/libchrome" name="platform/external/libchrome" groups="pdk" />
+  <project path="external/libconstrainedcrypto" name="platform/external/libconstrainedcrypto" groups="pdk" />
+  <project path="external/libcups" name="platform/external/libcups" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/libcxx" name="platform/external/libcxx" groups="pdk" />
+  <project path="external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" />
+  <project path="external/libdaemon" name="platform/external/libdaemon" groups="pdk" />
+  <project path="external/libdivsufsort" name="platform/external/libdivsufsort" groups="pdk" />
+  <project path="external/libdrm" name="platform/external/libdrm" groups="pdk" />
+  <project path="external/libedit" name="platform/external/libedit" groups="pdk" />
+  <project path="external/libese" name="platform/external/libese" groups="pdk" />
+  <project path="external/libevent" name="platform/external/libevent" groups="pdk" />
+  <project path="external/libexif" name="platform/external/libexif" groups="pdk" />
+  <project path="external/libffi" name="platform/external/libffi" groups="pdk" />
+  <project path="external/libgsm" name="platform/external/libgsm" groups="pdk" />
+  <project path="external/libhevc" name="platform/external/libhevc" groups="pdk" />
+  <project path="external/libjpeg-turbo" name="platform/external/libjpeg-turbo" groups="pdk" />
+  <project path="external/libldac" name="platform/external/libldac" groups="pdk" />
+  <project path="external/libmicrohttpd" name="platform/external/libmicrohttpd" groups="pdk" />
+  <project path="external/libmojo" name="platform/external/libmojo" groups="pdk" />
+  <project path="external/libmpeg2" name="platform/external/libmpeg2" groups="pdk" />
+  <project path="external/libmtp" name="platform/external/libmtp" groups="pdk" />
+  <project path="external/libnetfilter_conntrack" name="platform/external/libnetfilter_conntrack" groups="pdk" />
+  <project path="external/libnfnetlink" name="platform/external/libnfnetlink" groups="pdk" />
+  <project path="external/libnl" name="platform/external/libnl" groups="pdk" />
+  <project path="external/libogg" name="platform/external/libogg" groups="pdk" />
+  <project path="external/libopus" name="platform/external/libopus" groups="pdk" />
+  <project path="external/libpcap" name="platform/external/libpcap" groups="pdk" />
+  <project path="external/libphonenumber" name="platform/external/libphonenumber" groups="pdk" />
+  <project path="external/libpng" name="platform/external/libpng" groups="pdk" />
+  <project path="external/libtextclassifier" name="platform/external/libtextclassifier" groups="pdk" />
+  <project path="external/libunwind" name="platform/external/libunwind" groups="pdk" />
+  <project path="external/libunwind_llvm" name="platform/external/libunwind_llvm" groups="pdk" />
+  <project path="external/libusb" name="platform/external/libusb" groups="pdk" />
+  <project path="external/libusb-compat" name="platform/external/libusb-compat" groups="pdk" />
+  <project path="external/libvncserver" name="platform/external/libvncserver" groups="pdk" />
+  <project path="external/libvterm" name="platform/external/libvterm" groups="pdk" />
+  <project path="external/libxaac" name="platform/external/libxaac" groups="pdk" />
+  <project path="external/libxcam" name="platform/external/libxcam" groups="pdk" />
+  <project path="external/libxkbcommon" name="platform/external/libxkbcommon" groups="pdk" />
+  <project path="external/libxml2" name="platform/external/libxml2" groups="pdk,libxml2" />
+  <project path="external/linux-kselftest" name="platform/external/linux-kselftest" groups="vts,pdk" />
+  <project path="external/lisa" name="platform/external/lisa" groups="pdk" />
+  <project path="external/llvm" name="platform/external/llvm" groups="pdk" />
+  <project path="external/lmfit" name="platform/external/lmfit" groups="pdk" />
+  <project path="external/ltp" name="platform/external/ltp" groups="vts,pdk" />
+  <project path="external/lz4" name="platform/external/lz4" groups="pdk" />
+  <project path="external/lzma" name="platform/external/lzma" groups="pdk" />
+  <project path="external/markdown" name="platform/external/markdown" groups="pdk" />
+  <project path="external/mdnsresponder" name="platform/external/mdnsresponder" groups="pdk" />
+  <project path="external/mesa3d" name="platform/external/mesa3d" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/Microsoft-GSL" name="platform/external/Microsoft-GSL" groups="pdk" />
+  <project path="external/minijail" name="platform/external/minijail" groups="pdk" />
+  <project path="external/mksh" name="platform/external/mksh" groups="pdk" />
+  <project path="external/mmc-utils" name="platform/external/mmc-utils" groups="pdk" />
+  <project path="external/mockftpserver" name="platform/external/mockftpserver" groups="pdk" />
+  <project path="external/mockito" name="platform/external/mockito" groups="pdk" />
+  <project path="external/mockwebserver" name="platform/external/mockwebserver" groups="pdk" />
+  <project path="external/modp_b64" name="platform/external/modp_b64" groups="pdk" />
+  <project path="external/mp4parser" name="platform/external/mp4parser" groups="pdk" />
+  <project path="external/mtpd" name="platform/external/mtpd" groups="pdk" />
+  <project path="external/nanohttpd" name="platform/external/nanohttpd" groups="pdk" />
+  <project path="external/nanopb-c" name="platform/external/nanopb-c" groups="pdk" />
+  <project path="external/naver-fonts" name="platform/external/naver-fonts" groups="pdk" />
+  <project path="external/netcat" name="platform/external/netcat" groups="pdk" />
+  <project path="external/neven" name="platform/external/neven" groups="pdk" />
+  <project path="external/nfacct" name="platform/external/nfacct" groups="pdk" />
+  <project path="external/nist-pkits" name="platform/external/nist-pkits" groups="pdk" />
+  <project path="external/nist-sip" name="platform/external/nist-sip" groups="pdk" />
+  <project path="external/nos/host/android" name="platform/external/nos/host/android" groups="pdk" />
+  <project path="external/nos/host/generic" name="platform/external/nos/host/generic" groups="pdk" />
+  <project path="external/nos/test/system-test-harness" name="platform/external/nos/test/system-test-harness" groups="pdk" />
+  <project path="external/noto-fonts" name="platform/external/noto-fonts" groups="pdk" />
+  <project path="external/oauth" name="platform/external/oauth" groups="pdk" />
+  <project path="external/objenesis" name="platform/external/objenesis" groups="pdk" />
+  <project path="external/oj-libjdwp" name="platform/external/oj-libjdwp" groups="pdk" />
+  <project path="external/okhttp" name="platform/external/okhttp" groups="pdk" />
+  <project path="external/one-true-awk" name="platform/external/one-true-awk" groups="pdk" />
+  <project path="external/owasp/sanitizer" name="platform/external/owasp/sanitizer" groups="pdk" />
+  <project path="external/parameter-framework" name="platform/external/parameter-framework" groups="pdk" />
+  <project path="external/pcre" name="platform/external/pcre" groups="pdk" />
+  <project path="external/pdfium" name="platform/external/pdfium" groups="pdk" />
+  <project path="external/perf_data_converter" name="platform/external/perf_data_converter" groups="pdk" />
+  <project path="external/perfetto" name="platform/external/perfetto" groups="pdk" />
+  <project path="external/piex" name="platform/external/piex" groups="pdk" />
+  <project path="external/ply" name="platform/external/ply" groups="pdk" />
+  <project path="external/ppp" name="platform/external/ppp" groups="pdk" />
+  <project path="external/proguard" name="platform/external/proguard" groups="pdk" />
+  <project path="external/protobuf" name="platform/external/protobuf" groups="pdk" />
+  <project path="external/puffin" name="platform/external/puffin" groups="pdk" />
+  <project path="external/python/appdirs" name="platform/external/python/appdirs" groups="vts,pdk" />
+  <project path="external/python/cachetools" name="platform/external/python/cachetools" groups="vts,pdk" />
+  <project path="external/python/cpython2" name="platform/external/python/cpython2" groups="pdk" />
+  <project path="external/python/cpython3" name="platform/external/python/cpython3" groups="pdk" />
+  <project path="external/python/dill" name="platform/external/python/dill" groups="vts,pdk" />
+  <project path="external/python/enum" name="platform/external/python/enum" groups="vts,pdk" />
+  <project path="external/python/enum34" name="platform/external/python/enum34" groups="vts,pdk" />
+  <project path="external/python/future" name="platform/external/python/future" groups="vts,pdk" />
+  <project path="external/python/futures" name="platform/external/python/futures" groups="vts,pdk" />
+  <project path="external/python/gapic-google-cloud-pubsub-v1" name="platform/external/python/gapic-google-cloud-pubsub-v1" groups="vts,pdk" />
+  <project path="external/python/google-api-python-client" name="platform/external/python/google-api-python-client" groups="vts,pdk" />
+  <project path="external/python/google-auth" name="platform/external/python/google-auth" groups="vts,pdk" />
+  <project path="external/python/google-auth-httplib2" name="platform/external/python/google-auth-httplib2" groups="vts,pdk" />
+  <project path="external/python/google-cloud-core" name="platform/external/python/google-cloud-core" groups="vts,pdk" />
+  <project path="external/python/google-cloud-pubsub" name="platform/external/python/google-cloud-pubsub" groups="vts,pdk" />
+  <project path="external/python/google-gax" name="platform/external/python/google-gax" groups="vts,pdk" />
+  <project path="external/python/googleapis" name="platform/external/python/googleapis" groups="vts,pdk" />
+  <project path="external/python/grpc-google-iam-v1" name="platform/external/python/grpc-google-iam-v1" groups="vts,pdk" />
+  <project path="external/python/grpcio" name="platform/external/python/grpcio" groups="vts,pdk" />
+  <project path="external/python/httplib2" name="platform/external/python/httplib2" groups="vts,pdk" />
+  <project path="external/python/matplotlib" name="platform/external/python/matplotlib" groups="vts,pdk" />
+  <project path="external/python/numpy" name="platform/external/python/numpy" groups="vts,pdk" />
+  <project path="external/python/oauth2client" name="platform/external/python/oauth2client" groups="vts,pdk" />
+  <project path="external/python/olefile" name="platform/external/python/olefile" groups="vts,pdk" />
+  <project path="external/python/packaging" name="platform/external/python/packaging" groups="vts,pdk" />
+  <project path="external/python/parse" name="platform/external/python/parse" groups="vts,pdk" />
+  <project path="external/python/Pillow" name="platform/external/python/Pillow" groups="vts,pdk" />
+  <project path="external/python/ply" name="platform/external/python/ply" groups="vts,pdk" />
+  <project path="external/python/proto-google-cloud-pubsub-v1" name="platform/external/python/proto-google-cloud-pubsub-v1" groups="vts,pdk" />
+  <project path="external/python/protobuf" name="platform/external/python/protobuf" groups="vts,pdk" />
+  <project path="external/python/pyasn1" name="platform/external/python/pyasn1" groups="vts,pdk" />
+  <project path="external/python/pyasn1-modules" name="platform/external/python/pyasn1-modules" groups="vts,pdk" />
+  <project path="external/python/pyparsing" name="platform/external/python/pyparsing" groups="vts,pdk" />
+  <project path="external/python/requests" name="platform/external/python/requests" groups="vts,pdk" />
+  <project path="external/python/rsa" name="platform/external/python/rsa" groups="vts,pdk" />
+  <project path="external/python/scipy" name="platform/external/python/scipy" groups="vts,pdk" />
+  <project path="external/python/setuptools" name="platform/external/python/setuptools" groups="vts,pdk" />
+  <project path="external/python/six" name="platform/external/python/six" groups="vts,pdk" />
+  <project path="external/python/uritemplates" name="platform/external/python/uritemplates" groups="vts,pdk" />
+  <project path="external/rappor" name="platform/external/rappor" groups="pdk" />
+  <project path="external/replicaisland" name="platform/external/replicaisland" groups="pdk" />
+  <project path="external/rmi4utils" name="platform/external/rmi4utils" groups="pdk" />
+  <project path="external/robolectric" name="platform/external/robolectric" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/robolectric-shadows" name="platform/external/robolectric-shadows" groups="pdk-cw-fs,pdk-fs" />
+  <project path="external/roboto-fonts" name="platform/external/roboto-fonts" groups="pdk" />
+  <project path="external/rootdev" name="platform/external/rootdev" groups="pdk" />
+  <project path="external/safe-iop" name="platform/external/safe-iop" groups="pdk" />
+  <project path="external/scapy" name="platform/external/scapy" groups="pdk-fs" />
+  <project path="external/scrypt" name="platform/external/scrypt" groups="pdk" />
+  <project path="external/seccomp-tests" name="platform/external/seccomp-tests" groups="pdk" />
+  <project path="external/selinux" name="platform/external/selinux" groups="pdk" />
+  <project path="external/sfntly" name="platform/external/sfntly" groups="pdk,qcom_msm8x26" />
+  <project path="external/shaderc/spirv-headers" name="platform/external/shaderc/spirv-headers" groups="pdk" />
+  <project path="external/shflags" name="platform/external/shflags" groups="pdk" />
+  <project path="external/skia" name="platform/external/skia" groups="pdk,qcom_msm8x26" />
+  <project path="external/skqp" name="platform/external/skqp" groups="cts" clone-depth="1" />
+  <project path="external/sl4a" name="platform/external/sl4a" groups="pdk" />
+  <project path="external/slf4j" name="platform/external/slf4j" groups="pdk" />
+  <project path="external/smali" name="platform/external/smali" groups="pdk" />
+  <project path="external/snakeyaml" name="platform/external/snakeyaml" groups="pdk" />
+  <project path="external/sonic" name="platform/external/sonic" groups="pdk" />
+  <project path="external/sonivox" name="platform/external/sonivox" groups="pdk" />
+  <project path="external/speex" name="platform/external/speex" groups="pdk" />
+  <project path="external/spirv-llvm" name="platform/external/spirv-llvm" groups="pdk" />
+  <project path="external/squashfs-tools" name="platform/external/squashfs-tools" groups="pdk" />
+  <project path="external/strace" name="platform/external/strace" groups="pdk" />
+  <project path="external/stressapptest" name="platform/external/stressapptest" groups="pdk" />
+  <project path="external/subsampling-scale-image-view" name="platform/external/subsampling-scale-image-view" clone-depth="1" />
+  <project path="external/swiftshader" name="platform/external/swiftshader" groups="pdk" />
+  <project path="external/syslinux" name="platform/external/syslinux" groups="pdk" />
+  <project path="external/tagsoup" name="platform/external/tagsoup" groups="pdk" />
+  <project path="external/tcpdump" name="platform/external/tcpdump" groups="pdk" />
+  <project path="external/tensorflow" name="platform/external/tensorflow" groups="pdk" />
+  <project path="external/testng" name="platform/external/testng" groups="pdk" />
+  <project path="external/timezonepicker-support" name="platform/external/timezonepicker-support" groups="pdk" />
+  <project path="external/tinycompress" name="platform/external/tinycompress" groups="pdk" />
+  <project path="external/tinyxml" name="platform/external/tinyxml" groups="pdk" />
+  <project path="external/tinyxml2" name="platform/external/tinyxml2" groups="pdk" />
+  <project path="external/toolchain-utils" name="platform/external/toolchain-utils" />
+  <project path="external/toybox" name="platform/external/toybox" groups="pdk" />
+  <project path="external/tpm2" name="platform/external/tpm2" groups="pdk" />
+  <project path="external/trappy" name="platform/external/trappy" groups="pdk" />
+  <project path="external/tremolo" name="platform/external/tremolo" groups="pdk" />
+  <project path="external/turbine" name="platform/external/turbine" groups="pdk" />
+  <project path="external/unicode" name="platform/external/unicode" groups="pdk" />
+  <project path="external/universal-tween-engine" name="platform/external/universal-tween-engine" />
+  <project path="external/v4l2_codec2" name="platform/external/v4l2_codec2" groups="pdk" />
+  <project path="external/v8" name="platform/external/v8" groups="pdk" />
+  <project path="external/valgrind" name="platform/external/valgrind" groups="pdk" />
+  <project path="external/vboot_reference" name="platform/external/vboot_reference" groups="vboot,pdk-fs" />
+  <project path="external/vixl" name="platform/external/vixl" groups="pdk" />
+  <project path="external/vogar" name="platform/external/vogar" groups="pdk" />
+  <project path="external/volley" name="platform/external/volley" groups="pdk" />
+  <project path="external/vulkan-validation-layers" name="platform/external/vulkan-validation-layers" groups="pdk" />
+  <project path="external/walt" name="platform/external/walt" groups="pdk" />
+  <project path="external/wayland" name="platform/external/wayland" groups="pdk" />
+  <project path="external/wayland-protocols" name="platform/external/wayland-protocols" groups="pdk" />
+  <project path="external/webp" name="platform/external/webp" groups="pdk,qcom_msm8x26" />
+  <project path="external/webrtc" name="platform/external/webrtc" groups="pdk" />
+  <project path="external/webview_support_interfaces" name="platform/external/webview_support_interfaces" groups="pdk" />
+  <project path="external/wycheproof" name="platform/external/wycheproof" groups="pdk" />
+  <project path="external/x264" name="platform/external/x264" groups="pdk" />
+  <project path="external/xmlrpcpp" name="platform/external/xmlrpcpp" groups="pdk" />
+  <project path="external/xmp_toolkit" name="platform/external/xmp_toolkit" groups="pdk" />
+  <project path="external/xz-embedded" name="platform/external/xz-embedded" groups="pdk" />
+  <project path="external/zlib" name="platform/external/zlib" groups="pdk" />
+  <project path="external/zopfli" name="platform/external/zopfli" groups="pdk" />
+  <project path="external/zxing" name="platform/external/zxing" groups="pdk" />
+  <project path="frameworks/compile/libbcc" name="platform/frameworks/compile/libbcc" groups="pdk" />
+  <project path="frameworks/compile/mclinker" name="platform/frameworks/compile/mclinker" groups="pdk" />
+  <project path="frameworks/compile/slang" name="platform/frameworks/compile/slang" groups="pdk" />
+  <project path="frameworks/data-binding" name="platform/frameworks/data-binding" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/ex" name="platform/frameworks/ex" groups="pdk-cw-fs,pdk-fs" />
+  
+  <project path="frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/minikin" name="platform/frameworks/minikin" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/ml" name="platform/frameworks/ml" groups="pdk" />
+  <project path="frameworks/multidex" name="platform/frameworks/multidex" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/bitmap" name="platform/frameworks/opt/bitmap" groups="pdk-fs" />
+  <project path="frameworks/opt/calendar" name="platform/frameworks/opt/calendar" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/car/services" name="platform/frameworks/opt/car/services" groups="pdk-fs" />
+  <project path="frameworks/opt/car/setupwizard" name="platform/frameworks/opt/car/setupwizard" groups="pdk" />
+  <project path="frameworks/opt/chips" name="platform/frameworks/opt/chips" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/colorpicker" name="platform/frameworks/opt/colorpicker" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/datetimepicker" name="platform/frameworks/opt/datetimepicker" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/inputconnectioncommon" name="platform/frameworks/opt/inputconnectioncommon" groups="pdk-fs" />
+  <project path="frameworks/opt/inputmethodcommon" name="platform/frameworks/opt/inputmethodcommon" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/net/ims" name="platform/frameworks/opt/net/ims" groups="frameworks_ims,pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/net/lowpan" name="platform/frameworks/opt/net/lowpan" groups="pdk-fs" />
+  <project path="frameworks/opt/net/voip" name="platform/frameworks/opt/net/voip" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/photoviewer" name="platform/frameworks/opt/photoviewer" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/setupwizard" name="platform/frameworks/opt/setupwizard" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/telephony" name="platform/frameworks/opt/telephony" groups="pdk" />
+  <project path="frameworks/opt/timezonepicker" name="platform/frameworks/opt/timezonepicker" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/opt/vcard" name="platform/frameworks/opt/vcard" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/rs" name="platform/frameworks/rs" groups="pdk" />
+  <project path="frameworks/support" name="platform/frameworks/support" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" />
+  <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="pdk,broadcom_wlan" />
+  <project path="hardware/ril" name="platform/hardware/ril" groups="pdk" />
+  <project path="kernel/configs" name="kernel/configs" groups="vts,pdk" />
+  <project path="kernel/tests" name="kernel/tests" />
+  <project path="libcore" name="platform/libcore" groups="pdk" />
+  <project path="libnativehelper" name="platform/libnativehelper" groups="pdk" />
+  <project path="packages/apps/BasicSmsReceiver" name="platform/packages/apps/BasicSmsReceiver" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/Browser2" name="platform/packages/apps/Browser2" groups="pdk-fs" />
+  <project path="packages/apps/Calendar" name="platform/packages/apps/Calendar" groups="pdk-fs" />
+  <project path="packages/apps/Car/Dialer" name="platform/packages/apps/Car/Dialer" groups="pdk-fs" />
+  <project path="packages/apps/Car/Hvac" name="platform/packages/apps/Car/Hvac" groups="pdk-fs" />
+  <project path="packages/apps/Car/LatinIME" name="platform/packages/apps/Car/LatinIME" groups="pdk-fs" />
+  <project path="packages/apps/Car/Launcher" name="platform/packages/apps/Car/Launcher" groups="pdk-fs" />
+  <project path="packages/apps/Car/LensPicker" name="platform/packages/apps/Car/LensPicker" groups="pdk-fs" />
+  <project path="packages/apps/Car/LocalMediaPlayer" name="platform/packages/apps/Car/LocalMediaPlayer" groups="pdk-fs" />
+  <project path="packages/apps/Car/Media" name="platform/packages/apps/Car/Media" groups="pdk-fs" />
+  <project path="packages/apps/Car/Messenger" name="platform/packages/apps/Car/Messenger" groups="pdk-fs" />
+  <project path="packages/apps/Car/Overview" name="platform/packages/apps/Car/Overview" groups="pdk-fs" />
+  <project path="packages/apps/Car/Radio" name="platform/packages/apps/Car/Radio" groups="pdk-fs" />
+  <project path="packages/apps/Car/Settings" name="platform/packages/apps/Car/Settings" groups="pdk-fs" />
+  <project path="packages/apps/Car/Stream" name="platform/packages/apps/Car/Stream" groups="pdk-fs" />
+  <project path="packages/apps/Car/SystemUpdater" name="platform/packages/apps/Car/SystemUpdater" groups="pdk-fs" />
+  <project path="packages/apps/Car/libs" name="platform/packages/apps/Car/libs" groups="pdk-fs" />
+  <project path="packages/apps/CarrierConfig" name="platform/packages/apps/CarrierConfig" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/CellBroadcastReceiver" name="platform/packages/apps/CellBroadcastReceiver" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/CertInstaller" name="platform/packages/apps/CertInstaller" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/Contacts" name="platform/packages/apps/Contacts" groups="pdk-fs" />
+  <project path="packages/apps/DeskClock" name="platform/packages/apps/DeskClock" groups="pdk-fs" />
+  <project path="packages/apps/DocumentsUI" name="platform/packages/apps/DocumentsUI" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/EmergencyInfo" name="platform/packages/apps/EmergencyInfo" groups="pdk-fs" />
+  <project path="packages/apps/Gallery2" name="platform/packages/apps/Gallery2" groups="pdk-fs" />
+  <project path="packages/apps/HTMLViewer" name="platform/packages/apps/HTMLViewer" groups="pdk-fs" />
+  <project path="packages/apps/KeyChain" name="platform/packages/apps/KeyChain" groups="pdk-fs" />
+  <project path="packages/apps/LegacyCamera" name="platform/packages/apps/LegacyCamera" groups="pdk-fs" />
+  <project path="packages/apps/ManagedProvisioning" name="platform/packages/apps/ManagedProvisioning" groups="pdk-fs" />
+  <project path="packages/apps/MusicFX" name="platform/packages/apps/MusicFX" groups="pdk-fs" />
+  <project path="packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="apps_nfc,pdk-fs" />
+  <project path="packages/apps/OneTimeInitializer" name="platform/packages/apps/OneTimeInitializer" groups="pdk-fs" />
+  <project path="packages/apps/PackageInstaller" name="platform/packages/apps/PackageInstaller" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/PhoneCommon" name="platform/packages/apps/PhoneCommon" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/Protips" name="platform/packages/apps/Protips" groups="pdk-fs" />
+  <project path="packages/apps/Provision" name="platform/packages/apps/Provision" groups="pdk-fs" />
+  <project path="packages/apps/SafetyRegulatoryInfo" name="platform/packages/apps/SafetyRegulatoryInfo" groups="pdk-fs" />
+  <project path="packages/apps/SecureElement" name="platform/packages/apps/SecureElement" groups="apps_se,pdk-fs" />
+  <project path="packages/apps/SettingsIntelligence" name="platform/packages/apps/SettingsIntelligence" groups="pdk-fs" />
+  <project path="packages/apps/SoundRecorder" name="platform/packages/apps/SoundRecorder" groups="pdk-fs" />
+  <project path="packages/apps/SpareParts" name="platform/packages/apps/SpareParts" groups="pdk-fs" />
+  <project path="packages/apps/StorageManager" name="platform/packages/apps/StorageManager" groups="pdk-fs" />
+  <project path="packages/apps/Tag" name="platform/packages/apps/Tag" groups="pdk-fs" />
+  <project path="packages/apps/Terminal" name="platform/packages/apps/Terminal" groups="pdk-fs" />
+  <project path="packages/apps/Test/connectivity" name="platform/packages/apps/Test/connectivity" groups="pdk" />
+  <project path="packages/apps/TimeZoneData" name="platform/packages/apps/TimeZoneData" groups="pdk" />
+  <project path="packages/apps/TimeZoneUpdater" name="platform/packages/apps/TimeZoneUpdater" groups="pdk" />
+  <project path="packages/apps/WallpaperPicker" name="platform/packages/apps/WallpaperPicker" groups="pdk-fs" />
+  <project path="packages/experimental" name="platform/packages/experimental" />
+  <project path="packages/providers/ApplicationsProvider" name="platform/packages/providers/ApplicationsProvider" groups="pdk-fs" />
+  <project path="packages/providers/BlockedNumberProvider" name="platform/packages/providers/BlockedNumberProvider" groups="pdk-fs" />
+  <project path="packages/providers/BookmarkProvider" name="platform/packages/providers/BookmarkProvider" groups="pdk-fs" />
+  <project path="packages/providers/CalendarProvider" name="platform/packages/providers/CalendarProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/CallLogProvider" name="platform/packages/providers/CallLogProvider" groups="pdk-fs" />
+  <project path="packages/providers/ContactsProvider" name="platform/packages/providers/ContactsProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/DownloadProvider" name="platform/packages/providers/DownloadProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/MediaProvider" name="platform/packages/providers/MediaProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/PartnerBookmarksProvider" name="platform/packages/providers/PartnerBookmarksProvider" groups="pdk-fs" />
+  <project path="packages/providers/TelephonyProvider" name="platform/packages/providers/TelephonyProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/TvProvider" name="platform/packages/providers/TvProvider" groups="pdk-fs" />
+  <project path="packages/providers/UserDictionaryProvider" name="platform/packages/providers/UserDictionaryProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/screensavers/Basic" name="platform/packages/screensavers/Basic" groups="pdk-fs" />
+  <project path="packages/screensavers/PhotoTable" name="platform/packages/screensavers/PhotoTable" groups="pdk-fs" />
+  <project path="packages/screensavers/WebView" name="platform/packages/screensavers/WebView" groups="pdk-fs" />
+  <project path="packages/services/BuiltInPrintService" name="platform/packages/services/BuiltInPrintService" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/services/Car" name="platform/packages/services/Car" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/services/Mms" name="platform/packages/services/Mms" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/services/NetworkRecommendation" name="platform/packages/services/NetworkRecommendation" groups="pdk-fs" />
+  <project path="packages/services/Telecomm" name="platform/packages/services/Telecomm" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/services/Telephony" name="platform/packages/services/Telephony" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/wallpapers/LivePicker" name="platform/packages/wallpapers/LivePicker" groups="pdk-fs" />
+  <project path="pdk" name="platform/pdk" groups="pdk" />
+  <project path="platform_testing" name="platform/platform_testing" groups="pdk-fs,pdk-cw-fs,cts" />
+  <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/build-tools" name="platform/prebuilts/build-tools" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/checkcolor" name="platform/prebuilts/checkcolor" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/checkstyle" name="platform/prebuilts/checkstyle" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/clang-tools" name="platform/prebuilts/clang-tools" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/deqp" name="platform/prebuilts/deqp" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/devtools" name="platform/prebuilts/devtools" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,linux,arm" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" groups="pdk,linux,arm" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8" groups="pdk,linux" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" name="platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/mips/mips64el-linux-android-4.9" groups="pdk,linux,mips" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" groups="pdk,linux,x86" clone-depth="1" />
+  <project path="prebuilts/gdb/linux-x86" name="platform/prebuilts/gdb/linux-x86" groups="linux" clone-depth="1" />
+  <project path="prebuilts/go/linux-x86" name="platform/prebuilts/go/linux-x86" groups="linux,pdk,tradefed" clone-depth="1" />
+  <project path="prebuilts/gradle-plugin" name="platform/prebuilts/gradle-plugin" groups="pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="prebuilts/jdk/jdk8" name="platform/prebuilts/jdk/jdk8" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/jdk/jdk9" name="platform/prebuilts/jdk/jdk9" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/libs/libedit" name="platform/prebuilts/libs/libedit" groups="pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="prebuilts/maven_repo/android" name="platform/prebuilts/maven_repo/android" groups="pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="prebuilts/maven_repo/bumptech" name="platform/prebuilts/maven_repo/bumptech" groups="pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="prebuilts/maven_repo/google-play-service-client-libraries-3p" name="platform/prebuilts/maven_repo/google-play-service-client-libraries-3p" clone-depth="1" />
+  <project path="prebuilts/misc" name="platform/prebuilts/misc" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/ktlint" name="platform/prebuilts/ktlint" clone-depth="1" />
+  <project path="prebuilts/python/linux-x86/2.7.5" name="platform/prebuilts/python/linux-x86/2.7.5" groups="linux,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="prebuilts/qemu-kernel" name="platform/prebuilts/qemu-kernel" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/r8" name="platform/prebuilts/r8" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/tools" name="platform/prebuilts/tools" groups="pdk,tools" clone-depth="1" />
+  <project path="prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" />
+  <project path="sdk" name="platform/sdk" groups="pdk-cw-fs,pdk-fs" />
+  <project path="system/ca-certificates" name="platform/system/ca-certificates" groups="pdk" />
+  <project path="system/chre" name="platform/system/chre" groups="pdk" />
+  <project path="system/connectivity/wificond" name="platform/system/connectivity/wificond" groups="pdk" />
+  <project path="system/connectivity/wifilogd" name="platform/system/connectivity/wifilogd" groups="pdk" />
+  <project path="system/extras" name="platform/system/extras" groups="pdk" />
+  <project path="system/gatekeeper" name="platform/system/gatekeeper" groups="pdk" />
+  <project path="system/hardware/interfaces" name="platform/system/hardware/interfaces" groups="pdk" />
+  <project path="system/hwservicemanager" name="platform/system/hwservicemanager" groups="pdk" />
+  <project path="system/iot/attestation" name="platform/system/iot/attestation" groups="pdk" />
+  <project path="system/keymaster" name="platform/system/keymaster" groups="pdk" />
+  <project path="system/libfmq" name="platform/system/libfmq" groups="pdk" />
+  <project path="system/libhwbinder" name="platform/system/libhwbinder" groups="pdk" />
+  <project path="system/libufdt" name="platform/system/libufdt" groups="pdk" />
+  <project path="system/libvintf" name="platform/system/libvintf" groups="pdk" />
+  <project path="system/netd" name="platform/system/netd" groups="pdk" />
+  <project path="system/nfc" name="platform/system/nfc" groups="pdk" />
+  <project path="system/nvram" name="platform/system/nvram" groups="pdk" />
+  <project path="system/security" name="platform/system/security" groups="pdk" />
+  <project path="system/timezone" name="platform/system/timezone" groups="pdk" />
+  <project path="system/tools/aidl" name="platform/system/tools/aidl" groups="pdk" />
+  <project path="system/tools/hidl" name="platform/system/tools/hidl" groups="pdk" />
+  <project path="system/tpm" name="platform/system/tpm" />
+  <project path="system/update_engine" name="platform/system/update_engine" groups="pdk" />
+  <project path="test/framework" name="platform/test/framework" groups="vts,pdk" />
+  <project path="test/suite_harness" name="platform/test/suite_harness" groups="cts,pdk-cw-fs,pdk-fs" />
+  <project path="test/vti/alert" name="platform/test/vti/alert" groups="vts,pdk" />
+  <project path="test/vti/dashboard" name="platform/test/vti/dashboard" groups="vts,pdk" />
+  <project path="test/vti/fuzz_test_serving" name="platform/test/vti/fuzz_test_serving" groups="vts,pdk" />
+  <project path="test/vti/test_serving" name="platform/test/vti/test_serving" groups="vts,pdk" />
+  <project path="test/vts" name="platform/test/vts" groups="vts,pdk" />
+  <project path="test/vts-testcase/fuzz" name="platform/test/vts-testcase/fuzz" groups="vts,pdk" />
+  <project path="test/vts-testcase/hal" name="platform/test/vts-testcase/hal" groups="vts,pdk" />
+  <project path="test/vts-testcase/hal-trace" name="platform/test/vts-testcase/hal-trace" groups="vts,pdk" />
+  <project path="test/vts-testcase/kernel" name="platform/test/vts-testcase/kernel" groups="vts,pdk" />
+  <project path="test/vts-testcase/nbu" name="platform/test/vts-testcase/nbu" groups="vts,pdk" />
+  <project path="test/vts-testcase/performance" name="platform/test/vts-testcase/performance" groups="vts,pdk" />
+  <project path="test/vts-testcase/security" name="platform/test/vts-testcase/security" groups="vts,pdk" />
+  <project path="test/vts-testcase/vndk" name="platform/test/vts-testcase/vndk" groups="vts,pdk" />
+  <project path="toolchain/benchmark" name="toolchain/benchmark" />
+  <project path="toolchain/binutils" name="toolchain/binutils" groups="pdk" />
+  <project path="toolchain/pgo-profiles" name="toolchain/pgo-profiles" groups="pdk" />
+  <project path="tools/acloud" name="platform/tools/acloud" groups="tools,vts,pdk,tradefed" />
+  <project path="tools/appbundle" name="platform/tools/appbundle" />
+  <project path="tools/adt/idea" name="platform/tools/adt/idea" groups="notdefault,tools" />
+  <project path="tools/apksig" name="platform/tools/apksig" groups="pdk,tradefed" />
+  <project path="tools/apkzlib" name="platform/tools/apkzlib" groups="pdk,tradefed" />
+  <project path="tools/base" name="platform/tools/base" groups="notdefault,tools" />
+  <project path="tools/build" name="platform/tools/build" groups="notdefault,tools" />
+  <project path="tools/dexter" name="platform/tools/dexter" groups="tools,pdk-fs" />
+  <project path="tools/external/fat32lib" name="platform/tools/external/fat32lib" groups="tools" />
+  <project path="tools/external/gradle" name="platform/tools/external/gradle" groups="tools" clone-depth="1" />
+
+  <project path="tools/loganalysis" name="platform/tools/loganalysis" groups="nopresubmit,pdk,tradefed" />
+  <project path="tools/metalava" name="platform/tools/metalava" groups="pdk,tools" />
+
+  <project path="tools/repohooks" name="platform/tools/repohooks" groups="adt-infra,cts,developers,motodev,pdk,tools,tradefed" />
+  <project path="tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" />
+  <project path="tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" />
+  <project path="tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" />
+
+  <project name="platform/external/chromium-webview" remote="aosp" path="external/chromium-webview" revision="f1a9488d2ad48060c7c736b7ff48b189da3abf60" upstream="refs/tags/android-9.0.0_r3" />
+
+
+  <!--
+  <project path="external/adt-infra" name="platform/external/adt-infra" groups="adt-infra,notdefault,pdk-fs" />
+
+  <project path="frameworks/hardware/interfaces" name="platform/frameworks/hardware/interfaces" groups="pdk" />
+
+  <project path="tools/idea" name="platform/tools/idea" groups="notdefault,tools" />
+
+  <project path="tools/motodev" name="platform/tools/motodev" groups="notdefault,motodev" />
+  <project path="tools/studio/cloud" name="platform/tools/studio/cloud" groups="notdefault,tools" />
+
+  <project path="tools/swt" name="platform/tools/swt" groups="notdefault,tools" />
+  -->
+
 </manifest>
