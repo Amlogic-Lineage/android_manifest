@@ -126,7 +126,7 @@
   <project name="android_vendor_amlogic_external_pppoe" remote="khadas" path="vendor/amlogic/common/external/pppoe"  />
   <project name="android_vendor_amlogic_external_recovery" remote="khadas" path="vendor/amlogic/common/external/recovery"  />
   <project name="android_vendor_amlogic_frameworks_pppoe" remote="khadas" path="vendor/amlogic/common/frameworks/pppoe"  />
-  <project name="android_vendor_amlogic_gpu-lib" remote="khadas" path="vendor/amlogic/common/gpu/lib" />
+  <project name="android_vendor_amlogic_gpu-lib" remote="khadas" path="vendor/amlogic/common/gpu-lib" />
   <project name="android_vendor_amlogic_gpu" remote="khadas" path="vendor/amlogic/common/gpu"  />
   <project name="android_vendor_amlogic_hdcp" remote="khadas" path="vendor/amlogic/common/hdcp"  />
   <project name="android_vendor_amlogic_interfaces" remote="khadas" path="vendor/amlogic/common/interfaces"  />
