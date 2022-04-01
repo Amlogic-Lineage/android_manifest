@@ -15,6 +15,7 @@
   <project name="android_hardware_amlogic_media" remote="lineage-khadas" path="hardware/amlogic/media"  />
   <project name="android_hardware_amlogic_memtrack" remote="lineage-khadas" path="hardware/amlogic/memtrack"  />
   <project name="android_hardware_amlogic_wifi" remote="lineage-khadas" path="hardware/amlogic/wifi"  />
+  <project name="android_hardware_wifi_icomm_drivers_ssv6xxx" remote="lineage-khadas" path="hardware/wifi/icomm/drivers/ssv6xxx"  />
   <project name="android_prebuilts_abi-dumps_vndk" remote="lineage-khadas" path="prebuilts/abi-dumps/vndk" />
   <project name="android_system_bt" remote="lineage-khadas" path="system/bt" />
   <project name="android_vendor_amlogic_common_external_dvb" remote="lineage-khadas" path="vendor/amlogic/common/external/dvb"  />
@@ -67,7 +68,6 @@
   <project name="android_hardware_libhardware" remote="khadas" path="hardware/libhardware" />
   <project name="android_hardware_qcom_neuralnetworks_hvxservice" remote="khadas" path="hardware/qcom/neuralnetworks/hvxservice" />
   <project name="android_hardware_wifi_broadcom_drivers_ap6xxx" remote="khadas" path="hardware/wifi/broadcom/drivers/ap6xxx"  />
-  <project name="android_hardware_wifi_icomm_drivers_ssv6xxx" remote="khadas" path="hardware/wifi/icomm/drivers/ssv6xxx"  />
   <project name="android_hardware_wifi_mtk_drivers_mt7601" remote="khadas" path="hardware/wifi/mtk/drivers/mt7601"  />
   <project name="android_hardware_wifi_mtk_drivers_mt7668" remote="khadas" path="hardware/wifi/mtk/drivers/mt7668"  />
   <project name="android_hardware_wifi_qualcomm_drivers_qca6174" remote="khadas" path="hardware/wifi/qualcomm/drivers/qca6174"  />
