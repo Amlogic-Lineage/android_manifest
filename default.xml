@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="https://android.googlesource.com/" name="aosp" review="https://android.googlesource.com/"/>
-  <remote fetch="https://github.com/khadas/" name="khadas" revision="khadas-vims-pie" />
+  <remote fetch="https://github.com/khadas/" name="khadas" revision="refs/tags/Vims-Pie-V211220" />
   <remote fetch="https://github.com/Amlogic-Lineage/" revision="khadas-vims-pie_64" name="lineage-khadas"/>
-  <default remote="aosp" revision="refs/tags/android-9.0.0_r3"  sync-c="true" sync-j="4"/>
+  <default remote="aosp" revision="refs/tags/android-security-9.0.0_r76"  sync-c="true" sync-j="4"/>
 
   <!-- projects patched for 64bits compatibility -->
   <project name="android_frameworks_base" remote="lineage-khadas" path="frameworks/base" />
@@ -27,9 +27,21 @@
   <project name="android_hardware_amlogic_hwcomposer" remote="lineage-khadas" path="hardware/amlogic/hwcomposer"  />
   <project name="android_hardware_interfaces" remote="lineage-khadas"  path="hardware/interfaces" />
 
-  <!-- khadas projects -->
-
-  <project name="android_build_make" remote="khadas" path="build/make" >
+  <!-- khadas repos merged with current aosp -->
+  <project name="android_external_libvpx" remote="lineage-khadas" path="external/libvpx" />
+  <project name="android_external_wpa_supplicant_8" remote="lineage-khadas" path="external/wpa_supplicant_8"/>
+  <project name="android_frameworks_native" remote="lineage-khadas" path="frameworks/native" />
+  <project name="android_frameworks_opt_net_wifi" remote="lineage-khadas" path="frameworks/opt/net/wifi" />
+  <project name="android_hardware_libhardware" remote="lineage-khadas" path="hardware/libhardware" />
+  <project name="android_packages_apps_Bluetooth" remote="lineage-khadas" path="packages/apps/Bluetooth" />
+  <project name="android_packages_apps_Launcher3" remote="lineage-khadas" path="packages/apps/Launcher3" />
+  <project name="android_packages_apps_Settings" remote="lineage-khadas" path="packages/apps/Settings" />
+  <project name="android_system_core" remote="lineage-khadas" path="system/core" />
+  <project name="android_system_libhidl" remote="lineage-khadas" path="system/libhidl" />
+  <project name="android_system_media" remote="lineage-khadas" path="system/media" />
+  <project name="android_system_sepolicy" remote="lineage-khadas" path="system/sepolicy" />
+  <project name="android_system_vold" remote="lineage-khadas" path="system/vold" />
+  <project name="android_build_make" remote="lineage-khadas" path="build/make" >
     <copyfile dest="Makefile" src="core/root.mk"/>
     <linkfile dest="build/CleanSpec.mk" src="CleanSpec.mk"/>
     <linkfile dest="build/buildspec.mk.default" src="buildspec.mk.default"/>
@@ -38,6 +50,10 @@
     <linkfile dest="build/target" src="target"/>
     <linkfile dest="build/tools" src="tools"/>
   </project>
+
+
+  <!-- khadas projects -->
+
   <project name="android_build_soong" remote="khadas" path="build/soong" >
     <linkfile dest="Android.bp" src="root.bp"/>
     <linkfile dest="bootstrap.bash" src="bootstrap.bash"/>
@@ -47,25 +63,23 @@
   <project name="android_device_khadas" remote="khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
   <project name="android_external_e2fsprogs" remote="khadas" path="external/e2fsprogs" />
   <project name="android_external_i2c-tools" remote="khadas" path="external/i2c-tools" />
-  <project name="android_external_libvpx" remote="khadas" path="external/libvpx" />
   <project name="android_external_tinyalsa" remote="khadas" path="external/tinyalsa" />
-  <project name="android_external_wpa_supplicant_8" remote="khadas" path="external/wpa_supplicant_8"/>
-  <project name="android_frameworks_native" remote="khadas" path="frameworks/native" />
   <project name="android_frameworks_opt_net_ethernet" remote="khadas" path="frameworks/opt/net/ethernet" />
-  <project name="android_frameworks_opt_net_wifi" remote="khadas" path="frameworks/opt/net/wifi" />
   <project name="android_hardware_amlogic_bootctrl" remote="khadas" path="hardware/amlogic/bootctrl"  />
   <project name="android_hardware_amlogic_consumerir" remote="khadas" path="hardware/amlogic/consumerir"  />
   <project name="android_hardware_amlogic_gatekeeper" remote="khadas" path="hardware/amlogic/gatekeeper"  />
   <project name="android_hardware_amlogic_gralloc" remote="khadas" path="hardware/amlogic/gralloc"  />
+  <project name="android_hardware_amlogic_gps" remote="khadas" path="hardware/amlogic/gps" />
   <project name="android_hardware_amlogic_hdmi_cec" remote="khadas" path="hardware/amlogic/hdmi_cec"  />
   <project name="android_hardware_amlogic_keymaster" remote="khadas" path="hardware/amlogic/keymaster"  />
   <project name="android_hardware_amlogic_lights" remote="khadas" path="hardware/amlogic/lights"  />
   <project name="android_hardware_amlogic_media_modules" remote="khadas" path="hardware/amlogic/media_modules"  />
   <project name="android_hardware_amlogic_power" remote="khadas" path="hardware/amlogic/power"  />
+  <project name="android_hardware_amlogic_sensor" remote="khadas" path="hardware/amlogic/sensor" />
   <project name="android_hardware_amlogic_screen_source" remote="khadas" path="hardware/amlogic/screen_source"  />
   <project name="android_hardware_amlogic_thermal" remote="khadas" path="hardware/amlogic/thermal"  />
   <project name="android_hardware_amlogic_tv_input" remote="khadas" path="hardware/amlogic/tv_input"  />
-  <project name="android_hardware_libhardware" remote="khadas" path="hardware/libhardware" />
+
   <project name="android_hardware_qcom_neuralnetworks_hvxservice" remote="khadas" path="hardware/qcom/neuralnetworks/hvxservice" />
   <project name="android_hardware_wifi_broadcom_drivers_ap6xxx" remote="khadas" path="hardware/wifi/broadcom/drivers/ap6xxx"  />
   <project name="android_hardware_wifi_mtk_drivers_mt7601" remote="khadas" path="hardware/wifi/mtk/drivers/mt7601"  />
@@ -89,18 +103,11 @@
   <project name="android_hardware_wifi_realtek_drivers_8812au" remote="khadas" path="hardware/wifi/realtek/drivers/8812au"  />
   <project name="android_hardware_wifi_realtek_drivers_8822bs" remote="khadas" path="hardware/wifi/realtek/drivers/8822bs"  />
   <project name="android_hardware_wifi_realtek_drivers_8822bu" remote="khadas" path="hardware/wifi/realtek/drivers/8822bu"  />
-  <project name="android_packages_apps_Bluetooth" remote="khadas" path="packages/apps/Bluetooth" />
+
   <project name="android_packages_apps_Camera2" remote="khadas" path="packages/apps/Camera2" />
-  <project name="android_packages_apps_Launcher3" remote="khadas" path="packages/apps/Launcher3" />
-  <project name="android_packages_apps_Settings" remote="khadas" path="packages/apps/Settings" />
   <project name="android_packages_apps_TV" remote="khadas" path="packages/apps/TV"  />
   <project name="android_packages_apps_TvSettings" remote="khadas" path="packages/apps/TvSettings" />
   <project name="android_packages_inputmethods_LatinIME" remote="khadas" path="packages/inputmethods/LatinIME" />
-  <project name="android_system_core" remote="khadas" path="system/core" />
-  <project name="android_system_libhidl" remote="khadas" path="system/libhidl" />
-  <project name="android_system_media" remote="khadas" path="system/media" />
-  <project name="android_system_sepolicy" remote="khadas" path="system/sepolicy" />
-  <project name="android_system_vold" remote="khadas" path="system/vold" />
   <project name="android_vendor_amlogic_apps_AppInstaller" remote="khadas" path="vendor/amlogic/common/apps/AppInstaller"  />
   <project name="android_vendor_amlogic_apps_DLNA" remote="khadas" path="vendor/amlogic/common/apps/DLNA"  />
   <project name="android_vendor_amlogic_apps_DroidLiveTv" remote="khadas" path="vendor/amlogic/common/apps/DroidLiveTv"  />
@@ -700,7 +707,7 @@
   <project path="tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" />
   <project path="tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" />
   <project path="tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" />
-  <project name="platform/external/chromium-webview" remote="aosp" path="external/chromium-webview" revision="f1a9488d2ad48060c7c736b7ff48b189da3abf60" upstream="refs/tags/android-9.0.0_r3" />
+  <project name="platform/external/chromium-webview" path="external/chromium-webview" />
 
 
   <!--
