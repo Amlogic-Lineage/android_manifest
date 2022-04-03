@@ -26,6 +26,7 @@
   <project name="android_vendor_amlogic_common_prebuilt_libmedia" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmedia"  />
   <project name="android_hardware_amlogic_hwcomposer" remote="lineage-khadas" path="hardware/amlogic/hwcomposer"  />
   <project name="android_hardware_interfaces" remote="lineage-khadas"  path="hardware/interfaces" />
+  <project name="linux" remote="lineage-khadas" path="common"  />
 
   <!-- khadas repos merged with current aosp -->
   <project name="android_external_libvpx" remote="lineage-khadas" path="external/libvpx" />
@@ -152,7 +153,7 @@
   <project name="android_vendor_amlogic_tv_frameworks" remote="khadas" path="vendor/amlogic/common/tv/frameworks"  />
   <project name="android_vendor_amlogic_tv_tvserver" remote="khadas" path="vendor/amlogic/common/tv/tvserver"  />
   <project name="android_vendor_widevine" remote="khadas" path="vendor/widevine"  />
-  <project name="linux" remote="khadas" path="common"  />
+
   <project name="u-boot" remote="khadas" path="bootloader/uboot" revision="4752efbb90b7d048a81760c67f8c826f14baf41c" />
 
   
