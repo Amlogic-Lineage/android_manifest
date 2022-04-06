@@ -6,6 +6,7 @@
   <default remote="aosp" revision="refs/tags/android-security-9.0.0_r76"  sync-c="true" sync-j="4"/>
 
   <!-- projects patched for 64bits compatibility -->
+  <project name="android_device_khadas" remote="lineage-khadas" path="device/khadas" />
   <project name="android_frameworks_base" remote="lineage-khadas" path="frameworks/base" />
   <project name="android_frameworks_av" remote="lineage-khadas" path="frameworks/av" />
   <project name="android_hardware_amlogic_audio" remote="lineage-khadas" path="hardware/amlogic/audio"  />
@@ -61,7 +62,7 @@
   </project>
 
   <project name="android_bootable_recovery" remote="khadas" path="bootable/recovery" />
-  <project name="android_device_khadas" remote="khadas" path="device/khadas"  revision="62c6e5ebc149bb6b40d3e9b09c3c7d81cbc228fe" />
+
   <project name="android_external_e2fsprogs" remote="khadas" path="external/e2fsprogs" />
   <project name="android_external_i2c-tools" remote="khadas" path="external/i2c-tools" />
   <project name="android_external_tinyalsa" remote="khadas" path="external/tinyalsa" />
