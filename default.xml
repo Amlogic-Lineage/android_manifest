@@ -25,6 +25,7 @@
   <project name="android_vendor_amlogic_common_frameworks" remote="lineage-khadas" path="vendor/amlogic/common/frameworks"  />
   <project name="android_vendor_amlogic_common_frameworks_av" remote="lineage-khadas" path="vendor/amlogic/common/frameworks/av"  />
   <project name="android_vendor_amlogic_common_prebuilt_libmedia" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmedia"  />
+  <project name="android_vendor_amlogic_prebuilt_libmediadrm" remote="lineage-khadas" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
   <project name="android_hardware_amlogic_hwcomposer" remote="lineage-khadas" path="hardware/amlogic/hwcomposer"  />
   <project name="android_hardware_interfaces" remote="lineage-khadas"  path="hardware/interfaces" />
   <project name="linux" remote="lineage-khadas" path="common"  />
@@ -142,7 +143,6 @@
   <project name="android_vendor_amlogic_interfaces" remote="khadas" path="vendor/amlogic/common/interfaces"  />
   <project name="android_vendor_amlogic_ir_tools" remote="khadas" path="vendor/amlogic/common/ir_tools"  />
   <project name="android_vendor_amlogic_npu" remote="khadas" path="vendor/amlogic/common/npu"  />
-  <project name="android_vendor_amlogic_prebuilt_libmediadrm" remote="khadas" path="vendor/amlogic/common/prebuilt/libmediadrm"  />
   <project name="android_vendor_amlogic_prebuilt_libstagefrighthw" remote="khadas" path="vendor/amlogic/common/prebuilt/libstagefrighthw"  />
   <project name="android_vendor_amlogic_prebuilt" remote="khadas" path="vendor/amlogic/common/prebuilt"  />
   <project name="android_vendor_amlogic_provision" remote="khadas" path="vendor/amlogic/common/provision"  />
